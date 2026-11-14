@@ -1,0 +1,345 @@
+@import 'tailwindcss';
+
+@theme inline {
+  --color-primary: var(--primary);
+  --color-primary-foreground: #26221f;
+  --color-border: var(--border);
+  --color-muted: var(--surface);
+  --color-ring: var(--primary);
+}
+
+/* Shared typography, spacing and surfaces for the entire page. */
+:root {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-synthesis: none;
+  color-scheme: light;
+  --bg: #fff4dd;
+  --fg: #26221f;
+  --secondary: #686052;
+  --surface: #f4e9d3;
+  --border: #26221f24;
+  --primary: #ff885e;
+  --radius: 12px;
+  --section-space: 36px;
+  --column-gap: 36px;
+  background: var(--bg);
+  color: var(--fg);
+  scroll-behavior: smooth;
+  scroll-padding-top: 24px;
+}
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --bg: #26221f;
+  --fg: #f5ead6;
+  --secondary: #bdb3a2;
+  --surface: #302c27;
+  --border: #f5ead624;
+}
+* { box-sizing: border-box; }
+body { margin: 0; font-size: 15px; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+button, a { -webkit-tap-highlight-color: transparent; }
+button { font: inherit; cursor: pointer; }
+a { color: inherit; text-decoration: none; transition: color .15s; }
+a:hover { color: var(--primary); }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--primary); outline-offset: 5px; }
+img { display: block; max-width: 100%; }
+h1, h2, h3, p, dl { margin: 0; }
+h1, h2, h3 { font-weight: 750; line-height: 1.15; }
+h2 { font-size: 24px; letter-spacing: -.6px; }
+h3 { font-size: 26px; letter-spacing: -.6px; }
+p { color: var(--secondary); }
+.orange { color: var(--primary); }
+.shell { width: min(980px, calc(100% - 48px)); margin-inline: auto; }
+.section { padding-block: var(--section-space); border-top: 1px solid var(--border); }
+.section > h2, .section-heading { margin-bottom: 24px; }
+
+/* Navigation */
+.header { height: 80px; display: flex; align-items: center; justify-content: space-between; gap: 24px; border-bottom: 1px solid var(--border); }
+.wordmark { display: grid; place-items: center; width: 44px; height: 44px; flex-shrink: 0; background: #171717; color: #fff; border-radius: var(--radius); font-size: 25px; font-weight: 800; letter-spacing: -2px; }
+.wordmark span { display: none; }
+.wordmark:hover { color: #fff; }
+:root[data-theme='dark'] .wordmark { background: #f5f5f5; color: #171717; }
+nav, .header-right { display: flex; align-items: center; gap: 28px; }
+nav, .contact-nav { font-size: 13px; font-weight: 600; }
+.contact-nav { display: inline-flex; align-items: center; gap: 10px; }
+.header-right { gap: 18px; }
+.header-right button { border-radius: var(--radius); background: transparent; color: var(--secondary); }
+.header-right button:hover { background: var(--surface); color: var(--fg); }
+
+/* Introduction */
+.hero { padding-block: 44px; }
+.hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: var(--column-gap); align-items: center; }
+h1 { font-size: clamp(46px, 6vw, 70px); letter-spacing: -3px; line-height: 1.06; }
+.hero-description { margin-top: 24px; font-size: 16px; line-height: 1.75; }
+.hero-actions { display: flex; align-items: center; gap: 24px; margin-top: 28px; }
+.hero-actions > a:first-child { border-radius: var(--radius); font-size: 14px; font-weight: 650; }
+.text-link { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600; }
+.portrait { width: 100%; aspect-ratio: 4 / 4.5; border-radius: var(--radius); overflow: hidden; transform: rotate(2deg); box-shadow: 3px 3px 0 #0004; }
+.portrait img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+.monogram { height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; background: var(--surface); }
+.monogram > span { font-size: 90px; font-weight: 750; }
+.monogram small { font-size: 11px; color: var(--secondary); }
+
+/* All content sections use the same two-column grid. */
+.about-card, .game-project, .powerlifting-card {
+  display: grid;
+  grid-template-columns: 340px minmax(0, 1fr);
+  gap: var(--column-gap);
+  align-items: center;
+}
+.about-card { padding: 24px; background: var(--surface); border-radius: var(--radius); grid-template-columns: 316px minmax(0, 1fr); }
+.about-story { grid-column: 2; grid-row: 1; }
+.about-story h3 { margin: 12px 0; }
+.about-story p { font-size: 14px; }
+.university-badge { display: flex; align-items: center; gap: 8px; color: var(--secondary); font-size: 13px; font-weight: 600; }
+.about-course { grid-column: 1; grid-row: 1; display: flex; align-items: baseline; justify-content: center; gap: 10px; }
+.course-number { font-size: 64px; line-height: 1; letter-spacing: -3px; font-weight: 750; }
+.about-course strong { font-size: 16px; color: var(--secondary); font-weight: 500; }
+.game-preview { display: block; border-radius: var(--radius); overflow: hidden; }
+.game-preview img { width: 100%; height: auto; }
+.game-notes h3, .powerlifting-content h3 { margin-bottom: 14px; }
+.game-notes p + p { margin-top: 12px; }
+.game-notes p, .powerlifting-content p { font-size: 15px; }
+.powerlifting-photo { width: 100%; aspect-ratio: 4 / 4.5; height: auto; object-fit: cover; object-position: center 100%; border-radius: var(--radius); transform: rotate(2deg); box-shadow: 3px 3px 0 #0004; }
+.lift-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-top: 22px; }
+.lift-stats > div { background: var(--surface); border-radius: var(--radius); padding: 12px 14px; }
+.lift-stats dt { color: var(--secondary); font-size: 12px; margin-bottom: 5px; }
+.lift-stats dd { margin: 0; font-size: 26px; font-weight: 700; line-height: 1.2; letter-spacing: -.6px; }
+.lift-stats dd span { font-size: 13px; font-weight: 500; color: var(--secondary); letter-spacing: 0; }
+.powerlifting-total { display: flex; align-items: baseline; gap: 14px; margin-top: 18px; }
+.powerlifting-total strong { font-size: 30px; letter-spacing: -.8px; white-space: nowrap; }
+.powerlifting-total strong span { font-size: 16px; font-weight: 500; letter-spacing: 0; }
+.powerlifting-total > span { font-size: 12px; color: var(--secondary); }
+
+/* Contacts keep the same width and section rhythm. */
+.contact-section .shell { padding-block: var(--section-space); border-top: 1px solid var(--border); }
+.contact-section h2 { margin-bottom: 24px; }
+.contact-links { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.contact-links a { display: flex; align-items: center; gap: 14px; padding: 18px 20px; background: var(--surface); border-radius: var(--radius); }
+.contact-links small { display: block; color: var(--secondary); font-size: 11px; margin-bottom: 2px; }
+.contact-links strong { font-size: 17px; font-weight: 650; }
+.contact-links a > svg:last-child { margin-left: auto; width: 18px; }
+footer { display: flex; justify-content: space-between; gap: 20px; padding-block: 20px; border-top: 1px solid var(--border); color: var(--secondary); font-size: 11px; }
+
+@media (max-width: 850px) {
+  :root { --column-gap: 28px; }
+  .hero-grid { grid-template-columns: minmax(0, 1fr) 280px; }
+  .about-card, .game-project, .powerlifting-card { grid-template-columns: 280px minmax(0, 1fr); }
+  .about-card { grid-template-columns: 256px minmax(0, 1fr); }
+  nav { gap: 18px; }
+  .lift-stats > div { padding: 10px; }
+  .lift-stats dd { font-size: 23px; }
+}
+@media (max-width: 650px) {
+  :root { --section-space: 28px; --column-gap: 24px; }
+  .shell { width: calc(100% - 36px); }
+  .header { height: 72px; gap: 12px; }
+  .wordmark { width: 38px; height: 38px; font-size: 23px; }
+  nav { gap: 12px; font-size: 11px; }
+  .contact-nav { display: none; }
+  .header-right { gap: 0; }
+  .hero { padding-block: 32px; }
+  .hero-grid, .about-card, .game-project, .powerlifting-card { grid-template-columns: 1fr; }
+  h1 { font-size: clamp(44px, 11vw, 62px); letter-spacing: -2px; }
+  h2 { font-size: 22px; }
+  h3 { font-size: 24px; }
+  .hero-description { font-size: 15px; margin-top: 20px; }
+  .hero-actions { gap: 20px; flex-wrap: wrap; margin-top: 22px; }
+  .portrait { width: 260px; max-width: 90%; justify-self: center; margin-block: 8px; }
+  .about-card { padding: 22px; gap: 18px; }
+  .about-story, .about-course { grid-column: auto; grid-row: auto; }
+  .about-course { justify-content: flex-start; border-top: 1px solid var(--border); padding-top: 16px; }
+  .course-number { font-size: 32px; letter-spacing: -1px; }
+  .about-course strong { font-size: 14px; }
+  .powerlifting-photo { width: 260px; max-width: 90%; justify-self: center; margin-block: 8px; }
+  .powerlifting-total { flex-wrap: wrap; gap: 6px 14px; }
+  .contact-links { grid-template-columns: 1fr; gap: 12px; }
+  .contact-links a { padding: 16px 18px; }
+  footer { font-size: 10px; align-items: baseline; }
+  footer a { white-space: nowrap; }
+}
+@media (prefers-reduced-motion: reduce) {
+  :root { scroll-behavior: auto; }
+  *, *::before, *::after { transition: none !important; }
+}
+
+/* Restore the previous page appearance. */
+:root{font-family:ui-rounded,'Arial Rounded MT Bold',system-ui,sans-serif;--radius:16px;--secondary:#c3b6a2;--border:#eee0c5;--surface:#332e28;--card-outline:color-mix(in srgb,var(--fg) 24%,transparent);--shadow:#100e0c;--pastel:#b9d992}
+:root[data-theme='light']{--bg:#fff4dd;--fg:#26201a;--secondary:#655a4c;--border:#26201a;--surface:#fffdf7;--primary:#ff7043;--shadow:#26201a;--pastel:#c6e6b3}
+:root[data-theme='dark']{--bg:#26221f;--fg:#f5ead6;--secondary:#c3b6a2;--border:#eee0c5;--surface:#332e28;--primary:#ff885e}
+body{line-height:normal}
+.shell{width:min(1160px,calc(100% - 80px));max-width:1020px}
+.header{height:94px;gap:0;border-bottom:1px solid color-mix(in srgb,var(--fg) 18%,transparent)}
+.wordmark{display:block;width:auto;height:auto;background:#f5f5f5;color:#171717;border:1px solid #f5f5f5;border-radius:8px;box-shadow:none;transform:none;font-size:28px;letter-spacing:-2px;padding:2px 11px;font-weight:800;line-height:1.5}
+.wordmark span{display:inline}.wordmark span,.wordmark:hover{color:#171717}
+:root[data-theme='light'] .wordmark{background:#171717;color:#fff;border-color:#171717}
+:root[data-theme='light'] .wordmark span,:root[data-theme='light'] .wordmark:hover{color:#fff}
+nav,.header-right{gap:32px}nav{font-size:13px;font-weight:650}.contact-nav{font-size:13px;font-weight:400;gap:12px}
+.header-right button{border:0;box-shadow:none;background:transparent;color:var(--secondary);border-radius:10px}
+.hero{padding-top:58px;padding-bottom:60px}.hero-grid{grid-template-columns:1.4fr 1fr;gap:70px;margin:0}
+h1{font-weight:900;font-size:clamp(52px,6.5vw,76px);letter-spacing:-3px;line-height:1.05}
+.hero-description{font-size:16px;line-height:1.75;margin:25px 0}
+.hero-actions{margin:0;gap:28px}.hero-actions>a:first-child{border:2px solid #26201a;border-radius:12px;box-shadow:4px 4px 0 var(--shadow);color:#26201a;font-weight:750;transition:transform .15s,box-shadow .15s}
+.hero-actions>a:first-child:hover{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--shadow)}
+.text-link{gap:9px;font-size:13px;font-weight:400}
+.portrait{height:auto;aspect-ratio:4/4.5;transform:rotate(2deg);max-width:320px;justify-self:end;width:100%;border:0;border-radius:18px;box-shadow:3px 3px 0 var(--shadow);overflow:visible;background:#a5dcff}
+.portrait img{height:100%;object-fit:cover;object-position:center;border-radius:16px}
+.portrait-grid{display:none}
+.section{border-top:0;border-bottom:1px solid color-mix(in srgb,var(--fg) 18%,transparent);padding-top:45px;padding-bottom:45px}
+.about{border-top:1px solid color-mix(in srgb,var(--fg) 18%,transparent)}
+h2{font-size:28px;letter-spacing:-.8px;font-weight:850;line-height:1.15}
+.section>h2{margin-bottom:26px}.section-heading{margin-bottom:28px}
+.about-card{grid-template-columns:minmax(0,1fr) 170px;gap:0;padding:0;background:var(--surface);border:1px solid var(--card-outline);border-radius:16px;overflow:hidden;align-items:stretch}
+.about-story{grid-column:auto;grid-row:auto;padding:28px 32px}
+.university-badge{display:inline-flex;align-items:center;gap:9px;background:#a5dcff;color:#26201a;border:0;border-radius:7px;padding:7px 10px;font-size:11px;font-weight:750}
+.about-story h3{font-size:27px;font-weight:850;letter-spacing:-.7px;line-height:1.15;margin:20px 0 12px}
+.about-story p{max-width:570px;font-size:14px;line-height:1.75}
+.about-course{grid-column:auto;grid-row:auto;background:transparent;color:var(--fg);border-left:1px solid var(--card-outline);padding:24px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0}
+.course-number{font-size:66px;letter-spacing:-4px;line-height:1;font-weight:800}.about-course>strong{font-size:14px;font-weight:500;color:var(--secondary);margin-top:10px}
+.game-project{grid-template-columns:1.4fr 1fr;gap:36px;align-items:center;background:transparent;border:0;border-radius:0;overflow:visible}
+.game-preview,.game-preview img{border-radius:10px}
+.game-notes h3{font-size:28px;font-weight:750;line-height:1.2;letter-spacing:-.7px;margin:0 0 18px}
+.game-notes p{font-size:14px;line-height:1.85;color:var(--secondary);margin:0 0 14px}.game-notes p+p{margin-top:0}.game-notes p:last-child{margin-bottom:0;font-size:12px}
+.powerlifting-card{grid-template-columns:1fr 1.4fr;gap:70px;padding:0;align-items:center}
+.powerlifting-photo{grid-column:1;grid-row:1;justify-self:start;width:100%;max-width:320px;height:auto;aspect-ratio:4/4.5;object-fit:cover;object-position:center 100%;border:0;border-radius:16px;box-shadow:3px 3px 0 var(--shadow);transform:rotate(2deg)}
+.powerlifting-content{grid-column:2;grid-row:1;padding:0}
+.powerlifting-content>svg{display:none}.powerlifting-content h3{margin:0;font-size:36px;line-height:1.15;letter-spacing:-1px;font-weight:800}
+.powerlifting-content p{font-size:16px;line-height:1.75;margin:25px 0 0}
+.lift-stats{gap:12px;width:100%;margin:26px 0 0}.lift-stats>div{padding:15px 12px;background:var(--surface);border-radius:10px}
+.lift-stats dt{font-size:12px;color:var(--secondary);margin-bottom:8px}.lift-stats dd{font-size:29px;line-height:1.2;font-weight:800;letter-spacing:-1px}
+.powerlifting-total{display:flex;flex-direction:column;align-items:flex-start;width:auto;border:0;padding:0;margin-top:20px;gap:6px}
+.powerlifting-total strong{font-size:42px;letter-spacing:-2px;line-height:1.1;font-weight:850}.powerlifting-total strong span{font-size:25px;letter-spacing:0;font-weight:600}
+.contact-section{padding:45px 0 35px}
+.contact-section .shell{background:var(--surface);color:var(--fg);border:1px solid var(--card-outline);border-radius:16px;padding:28px 32px}
+.contact-section h2{font-size:28px;letter-spacing:-.8px;margin:0}
+.contact-links{grid-template-columns:1fr 1fr;gap:30px;margin-top:24px}
+.contact-links a{gap:20px;background:transparent;border-radius:0;border-top:1px solid color-mix(in srgb,var(--fg) 18%,transparent);padding:20px 0 0}
+.contact-links small{font:9px monospace;letter-spacing:1px;margin-bottom:9px}.contact-links strong{font-size:18px;font-weight:750}
+.contact-links a>svg:last-child{width:24px}
+footer{border:0;padding-top:25px;padding-bottom:35px;font-size:10px}
+@media(max-width:850px){.shell{width:calc(100% - 40px)}nav{gap:18px}.hero-grid{gap:30px}h1{letter-spacing:-4px}.hero-actions{gap:16px}}
+@media(max-width:700px){.shell{width:calc(100% - 36px)}.hero-grid{gap:30px}.portrait{max-width:280px}.hero{padding-top:40px;padding-bottom:40px}.about-story{padding:24px}.about-card{grid-template-columns:minmax(0,1fr) 130px}.about-course{padding:18px}.about-story h3{font-size:24px}.course-number{font-size:58px}.game-project{grid-template-columns:1fr;gap:24px}.game-notes{max-width:580px}.game-notes h3{margin-bottom:12px}.powerlifting-card{gap:30px}.powerlifting-photo{max-width:280px}}
+@media(min-width:601px) and (max-width:650px){.hero-grid{grid-template-columns:1.4fr 1fr}.portrait{width:100%;max-width:280px;justify-self:end;margin:0}.contact-nav{display:inline-flex}.powerlifting-card{grid-template-columns:1fr 1.4fr}.header{height:94px}.powerlifting-photo{width:100%;margin:0;justify-self:start}}
+@media(max-width:600px){.header{height:80px;gap:0}nav{gap:12px;font-size:11px}.header-right{gap:0}.contact-nav{display:none}.hero-grid{grid-template-columns:1fr}.hero{padding-top:40px;padding-bottom:40px}h1{font-size:58px;letter-spacing:-3px}.hero-description{font-size:15px}.hero-actions{gap:24px}.portrait{width:100%;justify-self:center;max-width:270px;margin:8px 0 0}.section{padding-top:35px;padding-bottom:35px}.about-card{grid-template-columns:1fr}.about-course{flex-direction:row;gap:12px;justify-content:flex-start;align-items:baseline;border-left:0;border-top:1px solid var(--card-outline);padding:16px 24px}.course-number{font-size:38px;letter-spacing:-2px}.about-course>strong{margin:0;font-size:14px}.powerlifting-card{grid-template-columns:1fr;gap:30px;padding:0}.powerlifting-photo{grid-column:1;grid-row:1;justify-self:center;max-width:270px;width:100%;margin:8px 0 0}.powerlifting-content{grid-column:1;grid-row:2;padding:0}.powerlifting-content h3{font-size:30px}.powerlifting-content p{font-size:15px}.lift-stats{gap:8px}.lift-stats>div{padding:12px 10px}.lift-stats dd{font-size:26px}.contact-section .shell{padding:24px}.contact-links{grid-template-columns:1fr;gap:24px}footer{gap:18px;flex-wrap:wrap}}
+
+/* Editorial biography: a quiet section label and one clear headline. */
+.about-editorial>h2{font-size:13px;font-weight:500;letter-spacing:0;line-height:1.5;color:var(--secondary);margin:0 0 18px}
+.about-editorial>h3{font-size:clamp(26px,3.2vw,38px);font-weight:750;letter-spacing:-1px;line-height:1.2;margin:0 0 20px;text-wrap:balance}
+.about-editorial>p{max-width:780px;font-size:16px;line-height:1.8;margin:0;color:var(--secondary)}
+.about-facts{display:flex;flex-wrap:wrap;gap:12px;list-style:none;margin:26px 0 0;padding:0}
+.about-facts li{display:inline-flex;align-items:center;gap:9px;padding:9px 15px;border:1px solid color-mix(in srgb,var(--fg) 32%,transparent);border-radius:999px;font-size:13px;color:var(--fg)}
+.about-facts svg{flex-shrink:0;color:var(--secondary)}
+.about-mobile-break{display:none}
+@media(max-width:600px){.about-editorial>h2{margin-bottom:14px}.about-editorial>h3{font-size:28px;letter-spacing:-.7px;margin-bottom:16px}.about-editorial>p{font-size:14px}.about-facts{gap:8px;margin-top:20px}.about-facts li{font-size:12px;padding:8px 12px}.about-mobile-break{display:block}}
+
+/* Enlarge the about label while preserving its original weight and color. */
+.about-editorial>h2{font-size:24px}
+@media(max-width:600px){.about-editorial>h2{font-size:22px}}
+
+/* Match all section labels to the approved About label. */
+.section>h2,.section-heading h2,.contact-section h2{
+  font-size:24px;
+  font-weight:500;
+  letter-spacing:0;
+  line-height:1.5;
+  color:var(--secondary);
+}
+@media(max-width:600px){
+  .section>h2,.section-heading h2,.contact-section h2{font-size:22px}
+}
+
+
+.tech-label{display:inline-block;padding:1px 7px;border-radius:5px;background:color-mix(in srgb,var(--primary) 12%,transparent);color:var(--fg);font-size:.92em;font-weight:650;line-height:1.5;vertical-align:baseline}
+
+/* Project and training sections inspired by the supplied layout. */
+.game-project{grid-template-columns:1.2fr 1fr;gap:36px}
+.game-preview,.game-preview img{border-radius:20px}
+.game-notes h3,.powerlifting-content h3{font-size:36px;line-height:1.15;font-weight:800;letter-spacing:-1px;margin:0 0 16px}
+.game-notes p,.game-notes p:last-child,.powerlifting-content p{font-size:15px;line-height:1.8;margin:0;color:var(--secondary)}
+.project-chips{display:flex;flex-wrap:wrap;gap:10px;list-style:none;padding:0;margin:22px 0}
+.project-chips li{display:inline-flex;align-items:center;gap:8px;border:1px solid color-mix(in srgb,var(--fg) 40%,transparent);border-radius:999px;padding:9px 17px;font-size:13px;line-height:1.4}
+.project-actions{display:flex;align-items:center;flex-wrap:wrap;gap:26px;margin-top:26px}
+.project-actions button{border-radius:18px;height:44px;padding-inline:20px;font-size:14px;font-weight:650}
+.project-actions button[aria-expanded='true'] svg{transform:rotate(180deg)}
+.project-more{grid-column:1/-1;padding:22px 24px;background:var(--surface);border-radius:16px}
+.project-more[hidden]{display:none}
+.project-more h4{font-size:17px;font-weight:700;margin:0 0 12px}
+.project-more p{max-width:800px;font-size:14px;line-height:1.8;margin:0;color:var(--secondary)}
+.project-more p+p{margin-top:12px}
+.powerlifting-card{grid-template-columns:340px minmax(0,1fr);gap:48px}
+.powerlifting-photo{max-width:none;width:100%;aspect-ratio:1;object-position:center 100%;transform:none;border:0;border-radius:20px;box-shadow:none}
+.lift-stats{gap:14px;margin-top:24px}
+.lift-stats>div{padding:16px 18px;border-radius:18px;background:var(--surface)}
+.lift-stats dt{display:flex;align-items:center;gap:8px;font-size:13px;margin-bottom:12px;color:var(--secondary)}
+.lift-stats dd{font-size:30px;line-height:1.1;letter-spacing:-.7px;font-weight:750}
+.lift-stats dd span{font-size:17px;color:var(--fg)}
+.powerlifting-total{position:relative;padding-left:24px;gap:5px;margin-top:24px}
+.powerlifting-total::before{content:'';position:absolute;left:0;top:5px;bottom:3px;width:6px;border-radius:999px;background:var(--primary)}
+.powerlifting-total strong{font-size:42px;font-weight:800;letter-spacing:-1px}
+.powerlifting-total strong span{font-size:24px}
+.powerlifting-total>span{font-size:13px}
+@media(max-width:850px){.powerlifting-card{grid-template-columns:280px minmax(0,1fr);gap:28px}.lift-stats{gap:8px}.lift-stats>div{padding:12px}.lift-stats dt{gap:5px;font-size:11px}.lift-stats dd{font-size:26px}.game-notes h3,.powerlifting-content h3{font-size:30px}}
+@media(max-width:700px){.game-project{grid-template-columns:1fr;gap:24px}.game-notes{max-width:none}}
+@media(max-width:600px){.powerlifting-card{grid-template-columns:1fr;gap:26px}.powerlifting-photo{max-width:320px;justify-self:center}.game-notes h3,.powerlifting-content h3{font-size:28px}.project-chips{margin:18px 0}.project-actions{margin-top:20px;gap:22px}.project-chips li{padding:8px 14px}.powerlifting-total strong{font-size:38px}.lift-stats dt{font-size:12px}.lift-stats dd{font-size:26px}.lift-stats>div{padding:14px 10px}.project-more{padding:20px}}
+
+/* Bold, straight sans-serif titles matching the supplied reference. */
+.game-notes h3,.powerlifting-content h3{
+  font-family:'Helvetica Neue',Arial,sans-serif;
+  font-weight:800;
+  letter-spacing:-1px;
+}
+
+/* Shared raised-button treatment and smoothly collapsing project details. */
+.project-actions .project-toggle{
+  height:48px;padding:0 24px;border:2px solid #26201a;border-radius:12px;
+  background:var(--primary);color:#26201a;box-shadow:4px 4px 0 var(--shadow);
+  font-size:14px;font-weight:750;transition:transform .15s,box-shadow .15s;
+}
+.project-actions .project-toggle:hover{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--shadow);opacity:1}
+.project-actions .project-toggle:active{transform:translate(4px,4px);box-shadow:0 0 0 var(--shadow)}
+.toggle-label{display:grid}
+.toggle-label>span{grid-area:1/1;transition:opacity .2s,transform .25s}
+.toggle-label-less{opacity:0;transform:translateY(6px)}
+.project-toggle[aria-expanded='true'] .toggle-label-more{opacity:0;transform:translateY(-6px)}
+.project-toggle[aria-expanded='true'] .toggle-label-less{opacity:1;transform:translateY(0)}
+.project-toggle svg{transition:transform .3s}
+.game-project{row-gap:0}
+.project-more{display:grid;grid-template-rows:0fr;opacity:0;padding:0;background:transparent;border-radius:0;transition:grid-template-rows .32s ease,opacity .25s ease}
+.project-more[data-open='true']{grid-template-rows:1fr;opacity:1}
+.project-more-clip{min-height:0;overflow:hidden}
+.project-more-content{padding:22px 24px;margin-top:28px;background:var(--surface);border-radius:16px}
+@media(max-width:700px){.game-notes{margin-top:24px}}
+@media(max-width:600px){.project-more-content{padding:20px;margin-top:24px}}
+@media(prefers-reduced-motion:reduce){.project-more,.project-toggle,.project-toggle svg,.toggle-label>span{transition:none!important}}
+
+/* Three direct contact cards, without an enclosing panel. */
+.contact-section{padding:0}
+.contact-section .shell{padding:36px 0;background:transparent;border:0;border-radius:0}
+.contact-section h2{margin:0 0 24px}
+.contact-links{display:grid;grid-template-columns:1fr 1fr 1.3fr;gap:16px;margin:0}
+.contact-links a{display:flex;align-items:center;gap:14px;min-width:0;padding:20px;background:var(--surface);border:1px solid var(--card-outline);border-radius:16px;transition:background .18s,border-color .18s}
+.contact-links a:hover{background:color-mix(in srgb,var(--primary) 7%,var(--surface));border-color:var(--primary);color:var(--fg)}
+.contact-links a>svg{flex-shrink:0}
+.contact-links a>div{min-width:0}
+.contact-links small{font:inherit;font-size:11px;color:var(--secondary);letter-spacing:0;margin-bottom:5px}
+.contact-links strong{display:block;font-size:14px;font-weight:700;line-height:1.4;overflow-wrap:anywhere}
+.contact-links a>svg:last-child{width:18px;height:18px;margin-left:auto}
+footer{border-top:1px solid color-mix(in srgb,var(--fg) 18%,transparent)}
+@media(max-width:850px){.contact-links{grid-template-columns:repeat(2,minmax(0,1fr))}.contact-links a:last-child{grid-column:1/-1}}
+@media(max-width:600px){.contact-section .shell{padding:30px 0}.contact-links{grid-template-columns:1fr;gap:12px}.contact-links a{padding:18px}.contact-links a:last-child{grid-column:auto}}
+
+/* Minimal contact links without card backgrounds or borders. */
+.contact-links a{padding:8px 0;border:0;border-radius:0;background:transparent}
+.contact-links a:hover{background:transparent;color:var(--primary)}
+.contact-links a>svg:last-child{width:15px;height:15px;margin-left:4px;color:var(--secondary)}
+.contact-links{gap:24px}
+@media(max-width:600px){.contact-links{gap:18px}.contact-links a{padding:4px 0}}
+
+/* Use the hero portrait's photo treatment across the page. */
+.game-preview,.powerlifting-photo{
+  border:0;
+  border-radius:16px;
+  transform:rotate(2deg);
+  box-shadow:3px 3px 0 var(--shadow);
+}
+.game-preview img{border-radius:16px}

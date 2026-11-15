@@ -337,3 +337,18 @@ footer{border-top:1px solid color-mix(in srgb,var(--fg) 18%,transparent)}
 .game-preview img{border-radius:16px}
 
 .about-editorial>p+p{margin-top:16px}
+
+/* Training results as quiet typography, not dashboard cards. */
+.lift-stats{gap:0;margin-top:24px;max-width:460px}
+.lift-stats>div{padding:0 20px;background:transparent;border-radius:0}
+.lift-stats>div:first-child{padding-left:0}
+.lift-stats>div+div{border-left:1px solid color-mix(in srgb,var(--fg) 15%,transparent)}
+.lift-stats dt{font-size:12px;font-weight:400;margin-bottom:8px}
+.lift-stats dd{font-family:'Helvetica Neue',Arial,sans-serif;font-size:25px;font-weight:600;letter-spacing:-.5px;line-height:1.2}
+.lift-stats dd span{font-size:14px;font-weight:400;color:var(--secondary)}
+.powerlifting-total{flex-direction:row;align-items:baseline;flex-wrap:wrap;gap:8px 12px;padding:18px 0 0;margin-top:22px;max-width:460px;border-top:1px solid color-mix(in srgb,var(--fg) 15%,transparent)}
+.powerlifting-total::before{display:none}
+.powerlifting-total strong{font-family:'Helvetica Neue',Arial,sans-serif;font-size:25px;font-weight:600;letter-spacing:-.5px;line-height:1.2}
+.powerlifting-total strong span{font-size:14px;font-weight:400;color:var(--secondary)}
+.powerlifting-total>span{font-size:12px}
+@media(max-width:600px){.lift-stats>div{padding:0 14px}.lift-stats>div:first-child{padding-left:0}.lift-stats dd,.powerlifting-total strong{font-size:24px}}

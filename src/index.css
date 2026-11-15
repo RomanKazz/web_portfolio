@@ -435,3 +435,13 @@ footer{border-top:1px solid color-mix(in srgb,var(--fg) 18%,transparent)}
 .nullwise-notes .project-chips li{border:0;border-radius:999px;background:color-mix(in srgb,var(--primary) 12%,transparent);padding:6px 10px;font-size:11px}
 @media(max-width:850px){.nullwise-project{gap:26px}.nullwise-gallery{gap:8px}.nullwise-video-cubes,.nullwise-video-knight{margin-top:32px}.nullwise-stats{gap:10px}.nullwise-stats dd{font-size:27px}}
 @media(max-width:700px){.nullwise-project{grid-template-columns:1fr}.nullwise-gallery{width:100%;max-width:520px;justify-self:center}.nullwise-notes{margin-top:16px}.nullwise-notes h3{font-size:36px}.nullwise-stats{max-width:400px}.nullwise-stats dd{font-size:32px}}
+
+/* Alternate the media placement between the two sections. */
+.nullwise-project{grid-template-columns:minmax(0,1fr) minmax(0,1.15fr)}
+.nullwise-gallery{grid-column:2;grid-row:1}
+.nullwise-notes{grid-column:1;grid-row:1}
+.powerlifting-card{grid-template-columns:minmax(0,1fr) minmax(0,1.4fr)}
+.powerlifting-photo{grid-column:1;grid-row:1;justify-self:start}
+.powerlifting-content{grid-column:2;grid-row:1}
+@media(max-width:700px){.nullwise-project{grid-template-columns:1fr}.nullwise-gallery{grid-column:1;grid-row:1}.nullwise-notes{grid-column:1;grid-row:2}}
+@media(max-width:600px){.powerlifting-card{grid-template-columns:1fr}.powerlifting-photo{grid-column:1;grid-row:1;justify-self:center}.powerlifting-content{grid-column:1;grid-row:2}}

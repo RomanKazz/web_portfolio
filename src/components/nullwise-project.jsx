@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 const covers = [
   { className: 'nullwise-video-cubes', src: 'nullwise-cubes.png', views: '6,8 млн', alt: 'Обложка видео «Кубы считают π?»' },
   { className: 'nullwise-video-galton', src: 'nullwise-galton.png', views: '2,7 млн', alt: 'Обложка видео «Доска Гальтона»' },
-  { className: 'nullwise-video-knight', src: 'nullwise-knight.png', views: '1,9 млн', alt: 'Обложка видео «Обход конём — вся доска?»' },
+  { className: 'nullwise-video-knight', src: 'nullwise-knight.png', views: '1,9 млн', alt: 'Обложка видео «Обход конём: вся доска?»' },
 ];
 
 export function NullwiseProject() {

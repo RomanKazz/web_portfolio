@@ -352,31 +352,3 @@ footer{border-top:1px solid color-mix(in srgb,var(--fg) 18%,transparent)}
 .powerlifting-total strong span{font-size:14px;font-weight:400;color:var(--secondary)}
 .powerlifting-total>span{font-size:12px}
 @media(max-width:600px){.lift-stats>div{padding:0 14px}.lift-stats>div:first-child{padding-left:0}.lift-stats dd,.powerlifting-total strong{font-size:24px}}
-
-/* One shared media-and-copy grid for projects and interests. */
-.game-project,.powerlifting-card{
-  grid-template-columns:340px minmax(0,1fr);
-  column-gap:40px;
-  align-items:center;
-}
-.game-preview,.powerlifting-photo{width:100%;max-width:none;justify-self:stretch}
-.game-notes,.powerlifting-content{min-width:0;margin-top:0}
-.game-notes h3,.powerlifting-content h3{font-size:32px;line-height:1.2;margin:0 0 16px}
-.game-notes p,.powerlifting-content p{font-size:15px;line-height:1.8;max-width:560px}
-.project-chips{margin:20px 0}
-.project-actions{margin-top:20px}
-.lift-stats,.powerlifting-total{max-width:none}
-@media(max-width:850px){
-  .game-project,.powerlifting-card{grid-template-columns:280px minmax(0,1fr);column-gap:28px}
-  .game-notes h3,.powerlifting-content h3{font-size:28px}
-}
-@media(max-width:650px){
-  .game-project,.powerlifting-card{grid-template-columns:1fr;gap:24px}
-  .game-preview,.powerlifting-photo{width:100%;max-width:340px;justify-self:start}
-  .powerlifting-photo{grid-column:1;grid-row:1;margin:0}
-  .powerlifting-content{grid-column:1;grid-row:2}
-  .game-notes,.powerlifting-content{margin-top:0}
-  .game-notes p,.powerlifting-content p{font-size:14px}
-  .game-project{row-gap:0}
-  .game-notes{padding-top:24px}
-}

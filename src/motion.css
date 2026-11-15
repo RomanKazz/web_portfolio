@@ -1,25 +1,68 @@
 /* Small movements, with the existing colours, shapes and tilted images intact. */
-:root { --motion-ease: cubic-bezier(.22, 1, .36, 1); transition: background-color .28s ease, color .28s ease; }
-:where(p, h2, h3, dt, dd, strong, .orange, .nullwise-results-label, footer) { transition: color .28s ease; }
-:where(.header, .section, footer, .nullwise-stats > div, .powerlifting-total) { transition: border-color .28s ease; }
-.powerlifting-total strong { transition: background-color .28s ease, color .28s ease; }
-.game-project .project-chips li { transition: border-color .28s ease, color .28s ease; }
+:root {
+  --motion-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  transition:
+    background-color 0.28s ease,
+    color 0.28s ease;
+}
+:where(p, h2, h3, dt, dd, strong, .orange, .nullwise-results-label, footer) {
+  transition: color 0.28s ease;
+}
+:where(.header, .section, footer, .nullwise-stats > div, .powerlifting-total) {
+  transition: border-color 0.28s ease;
+}
+.powerlifting-total strong {
+  transition:
+    background-color 0.28s ease,
+    color 0.28s ease;
+}
+.game-project .project-chips li {
+  transition:
+    border-color 0.28s ease,
+    color 0.28s ease;
+}
 .hero-actions > a:first-child,
 .project-actions .project-primary,
 .contact-actions .contact-telegram {
-  transition: transform .2s var(--motion-ease), box-shadow .2s var(--motion-ease), background-color .28s ease;
+  transition:
+    transform 0.2s var(--motion-ease),
+    box-shadow 0.2s var(--motion-ease),
+    background-color 0.28s ease;
 }
-.hero-actions > a:first-child:active { transform: translate(4px, 4px); box-shadow: none; }
-.wordmark { transition: transform .25s var(--motion-ease), background-color .28s ease, color .28s ease; }
-.header-right button { transition: background-color .2s ease, color .28s ease; }
-.theme-symbol { display: flex; animation: symbol-enter .3s var(--motion-ease); }
+.hero-actions > a:first-child:active {
+  transform: translate(4px, 4px);
+  box-shadow: none;
+}
+.wordmark {
+  transition:
+    transform 0.25s var(--motion-ease),
+    background-color 0.28s ease,
+    color 0.28s ease;
+}
+.header-right button {
+  transition:
+    background-color 0.2s ease,
+    color 0.28s ease;
+}
+.theme-symbol {
+  display: flex;
+  animation: symbol-enter 0.3s var(--motion-ease);
+}
 @keyframes symbol-enter {
-  from { opacity: 0; transform: rotate(-35deg) scale(.8); }
-  to { opacity: 1; transform: rotate(0) scale(1); }
+  from {
+    opacity: 0;
+    transform: rotate(-35deg) scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(0) scale(1);
+  }
 }
-nav a { position: relative; }
+nav a {
+  position: relative;
+}
 nav a::after {
-  content: '';
+  content: "";
   position: absolute;
   left: 0;
   right: 0;
@@ -28,30 +71,90 @@ nav a::after {
   background: var(--primary);
   transform: scaleX(0);
   transform-origin: left;
-  transition: transform .22s var(--motion-ease);
+  transition: transform 0.22s var(--motion-ease);
 }
-nav a:focus-visible::after { transform: scaleX(1); }
-:where(.text-link, .contact-nav, .contact-secondary, .hero-actions > a, .contact-telegram, .project-primary:not(.project-toggle)) > svg:last-child {
-  transition: transform .22s var(--motion-ease);
+nav a:focus-visible::after {
+  transform: scaleX(1);
 }
-.portrait, .game-preview, .powerlifting-photo { transition: transform .35s var(--motion-ease); }
-.nullwise-video { transition: translate .3s var(--motion-ease); }
-.copy-email { transition: background-color .2s ease, color .2s ease, transform .2s var(--motion-ease); }
-.copy-email:active { transform: scale(.92); }
+:where(
+    .text-link,
+    .contact-nav,
+    .contact-secondary,
+    .hero-actions > a,
+    .contact-telegram,
+    .project-primary:not(.project-toggle)
+  )
+  > svg:last-child {
+  transition: transform 0.22s var(--motion-ease);
+}
+.portrait,
+.game-preview,
+.powerlifting-photo {
+  transition: transform 0.35s var(--motion-ease);
+}
+.nullwise-video {
+  transition: translate 0.3s var(--motion-ease);
+}
+.copy-email {
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s var(--motion-ease);
+}
+.copy-email:active {
+  transform: scale(0.92);
+}
 @media (hover: hover) and (pointer: fine) {
-  nav a:hover::after { transform: scaleX(1); }
-  .wordmark:hover { transform: translateY(-2px); }
-  .portrait:hover, .game-preview:hover, .powerlifting-photo:hover { transform: rotate(1deg) translateY(-3px); }
-  .nullwise-video:hover { translate: 0 -4px; }
-  :where(.text-link, .contact-nav, .hero-actions > a, .contact-telegram, .project-primary:not(.project-toggle)):hover > svg:last-child,
-  .contact-secondary:hover > .lucide-arrow-up-right { transform: translate(2px, -2px); }
+  nav a:hover::after {
+    transform: scaleX(1);
+  }
+  .wordmark:hover {
+    transform: translateY(-2px);
+  }
+  .portrait:hover,
+  .game-preview:hover,
+  .powerlifting-photo:hover {
+    transform: rotate(1deg) translateY(-3px);
+  }
+  .nullwise-video:hover {
+    translate: 0 -4px;
+  }
+  :where(
+      .text-link,
+      .contact-nav,
+      .hero-actions > a,
+      .contact-telegram,
+      .project-primary:not(.project-toggle)
+    ):hover
+    > svg:last-child,
+  .contact-secondary:hover > .lucide-arrow-up-right {
+    transform: translate(2px, -2px);
+  }
 }
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation: none !important; transition: none !important; }
-  :root { scroll-behavior: auto; }
-  .portrait:hover, .game-preview:hover, .powerlifting-photo:hover { transform: rotate(2deg); }
-  .nullwise-video:hover { translate: none; }
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+  :root {
+    scroll-behavior: auto;
+  }
+  .portrait:hover,
+  .game-preview:hover,
+  .powerlifting-photo:hover {
+    transform: rotate(2deg);
+  }
+  .nullwise-video:hover {
+    translate: none;
+  }
 }
 @media print {
-  *, *::before, *::after { animation: none !important; transition: none !important; }
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
 }

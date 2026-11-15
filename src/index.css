@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 @theme inline {
   --color-primary: var(--primary);
@@ -8,420 +8,353 @@
   --color-ring: var(--primary);
 }
 
-/* Shared typography, spacing and surfaces for the entire page. */
+/* Theme and base typography. */
 :root {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: ui-rounded, "Arial Rounded MT Bold", system-ui, sans-serif;
   font-synthesis: none;
   color-scheme: light;
   --bg: #fff4dd;
   --fg: #26221f;
-  --secondary: #686052;
-  --surface: #f4e9d3;
-  --border: #26221f24;
+  --secondary: #c3b6a2;
+  --border: #eee0c5;
+  --surface: #332e28;
   --primary: #ff885e;
-  --radius: 12px;
-  --section-space: 36px;
-  --column-gap: 36px;
+  --shadow: #100e0c;
+  --card-outline: color-mix(in srgb, var(--fg) 24%, transparent);
   background: var(--bg);
   color: var(--fg);
   scroll-behavior: smooth;
   scroll-padding-top: 24px;
 }
-:root[data-theme='dark'] {
+:root[data-theme="light"] {
+  --fg: #26201a;
+  --secondary: #655a4c;
+  --border: #26201a;
+  --surface: #fffdf7;
+  --primary: #ff7043;
+  --shadow: #26201a;
+}
+:root[data-theme="dark"] {
   color-scheme: dark;
   --bg: #26221f;
   --fg: #f5ead6;
-  --secondary: #bdb3a2;
-  --surface: #302c27;
-  --border: #f5ead624;
 }
-* { box-sizing: border-box; }
-body { margin: 0; font-size: 15px; line-height: 1.65; -webkit-font-smoothing: antialiased; }
-button, a { -webkit-tap-highlight-color: transparent; }
-button { font: inherit; cursor: pointer; }
-a { color: inherit; text-decoration: none; transition: color .15s; }
-a:hover { color: var(--primary); }
-a:focus-visible, button:focus-visible { outline: 2px solid var(--primary); outline-offset: 5px; }
-img { display: block; max-width: 100%; }
-h1, h2, h3, p, dl { margin: 0; }
-h1, h2, h3 { font-weight: 750; line-height: 1.15; }
-h2 { font-size: 24px; letter-spacing: -.6px; }
-h3 { font-size: 26px; letter-spacing: -.6px; }
-p { color: var(--secondary); }
-.orange { color: var(--primary); }
-.shell { width: min(980px, calc(100% - 48px)); margin-inline: auto; }
-.section { padding-block: var(--section-space); border-top: 1px solid var(--border); }
-.section > h2, .section-heading { margin-bottom: 24px; }
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-size: 15px;
+  line-height: normal;
+  -webkit-font-smoothing: antialiased;
+}
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+button {
+  font: inherit;
+  cursor: pointer;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+a:hover {
+  color: var(--primary);
+}
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 5px;
+}
+img {
+  display: block;
+  max-width: 100%;
+}
+h1,
+h2,
+h3,
+p,
+dl {
+  margin: 0;
+}
+h1,
+h2,
+h3 {
+  font-weight: 750;
+  line-height: 1.15;
+}
+p {
+  color: var(--secondary);
+}
+.orange {
+  color: var(--primary);
+}
+.shell {
+  width: min(1160px, calc(100% - 80px));
+  max-width: 1020px;
+  margin-inline: auto;
+}
+.section {
+  padding-block: 45px;
+  border-bottom: 1px solid color-mix(in srgb, var(--fg) 18%, transparent);
+}
+.section > h2,
+.section-heading h2,
+.contact-section h2 {
+  font-size: 24px;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1.5;
+  color: var(--secondary);
+}
+.section > h2 {
+  margin-bottom: 26px;
+}
+.section-heading {
+  margin-bottom: 28px;
+}
+.text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 13px;
+  font-weight: 400;
+}
 
-/* Navigation */
-.header { height: 80px; display: flex; align-items: center; justify-content: space-between; gap: 24px; border-bottom: 1px solid var(--border); }
-.wordmark { display: grid; place-items: center; width: 44px; height: 44px; flex-shrink: 0; background: #171717; color: #fff; border-radius: var(--radius); font-size: 25px; font-weight: 800; letter-spacing: -2px; }
-.wordmark span { display: none; }
-.wordmark:hover { color: #fff; }
-:root[data-theme='dark'] .wordmark { background: #f5f5f5; color: #171717; }
-nav, .header-right { display: flex; align-items: center; gap: 28px; }
-nav, .contact-nav { font-size: 13px; font-weight: 600; }
-.contact-nav { display: inline-flex; align-items: center; gap: 10px; }
-.header-right { gap: 18px; }
-.header-right button { border-radius: var(--radius); background: transparent; color: var(--secondary); }
-.header-right button:hover { background: var(--surface); color: var(--fg); }
+/* Header. */
+.header {
+  height: 94px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--fg) 18%, transparent);
+}
+.wordmark {
+  display: block;
+  flex-shrink: 0;
+  padding: 2px 11px;
+  background: #f5f5f5;
+  color: #171717;
+  border: 1px solid #f5f5f5;
+  border-radius: 8px;
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -2px;
+  line-height: 1.5;
+}
+.wordmark span,
+.wordmark:hover {
+  color: #171717;
+}
+:root[data-theme="light"] .wordmark {
+  background: #171717;
+  color: #fff;
+  border-color: #171717;
+}
+:root[data-theme="light"] .wordmark span,
+:root[data-theme="light"] .wordmark:hover {
+  color: #fff;
+}
+nav,
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+nav {
+  font-size: 13px;
+  font-weight: 650;
+}
+.contact-nav {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 13px;
+  font-weight: 400;
+}
+.header-right button {
+  border: 0;
+  box-shadow: none;
+  background: transparent;
+  color: var(--secondary);
+  border-radius: 10px;
+}
+.header-right button:hover {
+  background: var(--surface);
+  color: var(--fg);
+}
 
-/* Introduction */
-.hero { padding-block: 44px; }
-.hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: var(--column-gap); align-items: center; }
-h1 { font-size: clamp(46px, 6vw, 70px); letter-spacing: -3px; line-height: 1.06; }
-.hero-description { margin-top: 24px; font-size: 16px; line-height: 1.75; }
-.hero-actions { display: flex; align-items: center; gap: 24px; margin-top: 28px; }
-.hero-actions > a:first-child { border-radius: var(--radius); font-size: 14px; font-weight: 650; }
-.text-link { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600; }
-.portrait { width: 100%; aspect-ratio: 4 / 4.5; border-radius: var(--radius); overflow: hidden; transform: rotate(2deg); box-shadow: 3px 3px 0 #0004; }
-.portrait img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
-.monogram { height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; background: var(--surface); }
-.monogram > span { font-size: 90px; font-weight: 750; }
-.monogram small { font-size: 11px; color: var(--secondary); }
-
-/* All content sections use the same two-column grid. */
-.about-card, .game-project, .powerlifting-card {
+/* Introduction and shared primary actions. */
+.hero {
+  padding: 58px 0 60px;
+}
+.hero-grid {
   display: grid;
-  grid-template-columns: 340px minmax(0, 1fr);
-  gap: var(--column-gap);
+  grid-template-columns: 1.4fr 1fr;
+  gap: 70px;
   align-items: center;
 }
-.about-card { padding: 24px; background: var(--surface); border-radius: var(--radius); grid-template-columns: 316px minmax(0, 1fr); }
-.about-story { grid-column: 2; grid-row: 1; }
-.about-story h3 { margin: 12px 0; }
-.about-story p { font-size: 14px; }
-.university-badge { display: flex; align-items: center; gap: 8px; color: var(--secondary); font-size: 13px; font-weight: 600; }
-.about-course { grid-column: 1; grid-row: 1; display: flex; align-items: baseline; justify-content: center; gap: 10px; }
-.course-number { font-size: 64px; line-height: 1; letter-spacing: -3px; font-weight: 750; }
-.about-course strong { font-size: 16px; color: var(--secondary); font-weight: 500; }
-.game-preview { display: block; border-radius: var(--radius); overflow: hidden; }
-.game-preview img { width: 100%; height: auto; }
-.game-notes h3, .powerlifting-content h3 { margin-bottom: 14px; }
-.game-notes p + p { margin-top: 12px; }
-.game-notes p, .powerlifting-content p { font-size: 15px; }
-.powerlifting-photo { width: 100%; aspect-ratio: 4 / 4.5; height: auto; object-fit: cover; object-position: center 100%; border-radius: var(--radius); transform: rotate(2deg); box-shadow: 3px 3px 0 #0004; }
-.lift-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-top: 22px; }
-.lift-stats > div { background: var(--surface); border-radius: var(--radius); padding: 12px 14px; }
-.lift-stats dt { color: var(--secondary); font-size: 12px; margin-bottom: 5px; }
-.lift-stats dd { margin: 0; font-size: 26px; font-weight: 700; line-height: 1.2; letter-spacing: -.6px; }
-.lift-stats dd span { font-size: 13px; font-weight: 500; color: var(--secondary); letter-spacing: 0; }
-.powerlifting-total { display: flex; align-items: baseline; gap: 14px; margin-top: 18px; }
-.powerlifting-total strong { font-size: 30px; letter-spacing: -.8px; white-space: nowrap; }
-.powerlifting-total strong span { font-size: 16px; font-weight: 500; letter-spacing: 0; }
-.powerlifting-total > span { font-size: 12px; color: var(--secondary); }
-
-/* Contacts keep the same width and section rhythm. */
-.contact-section .shell { padding-block: var(--section-space); border-top: 1px solid var(--border); }
-.contact-section h2 { margin-bottom: 24px; }
-.contact-links { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
-.contact-links a { display: flex; align-items: center; gap: 14px; padding: 18px 20px; background: var(--surface); border-radius: var(--radius); }
-.contact-links small { display: block; color: var(--secondary); font-size: 11px; margin-bottom: 2px; }
-.contact-links strong { font-size: 17px; font-weight: 650; }
-.contact-links a > svg:last-child { margin-left: auto; width: 18px; }
-footer { display: flex; justify-content: space-between; gap: 20px; padding-block: 20px; border-top: 1px solid var(--border); color: var(--secondary); font-size: 11px; }
-
-@media (max-width: 850px) {
-  :root { --column-gap: 28px; }
-  .hero-grid { grid-template-columns: minmax(0, 1fr) 280px; }
-  .about-card, .game-project, .powerlifting-card { grid-template-columns: 280px minmax(0, 1fr); }
-  .about-card { grid-template-columns: 256px minmax(0, 1fr); }
-  nav { gap: 18px; }
-  .lift-stats > div { padding: 10px; }
-  .lift-stats dd { font-size: 23px; }
+h1 {
+  font-weight: 900;
+  font-size: clamp(52px, 6.5vw, 76px);
+  letter-spacing: -3px;
+  line-height: 1.05;
 }
-@media (max-width: 650px) {
-  :root { --section-space: 28px; --column-gap: 24px; }
-  .shell { width: calc(100% - 36px); }
-  .header { height: 72px; gap: 12px; }
-  .wordmark { width: 38px; height: 38px; font-size: 23px; }
-  nav { gap: 12px; font-size: 11px; }
-  .contact-nav { display: none; }
-  .header-right { gap: 0; }
-  .hero { padding-block: 32px; }
-  .hero-grid, .about-card, .game-project, .powerlifting-card { grid-template-columns: 1fr; }
-  h1 { font-size: clamp(44px, 11vw, 62px); letter-spacing: -2px; }
-  h2 { font-size: 22px; }
-  h3 { font-size: 24px; }
-  .hero-description { font-size: 15px; margin-top: 20px; }
-  .hero-actions { gap: 20px; flex-wrap: wrap; margin-top: 22px; }
-  .portrait { width: 260px; max-width: 90%; justify-self: center; margin-block: 8px; }
-  .about-card { padding: 22px; gap: 18px; }
-  .about-story, .about-course { grid-column: auto; grid-row: auto; }
-  .about-course { justify-content: flex-start; border-top: 1px solid var(--border); padding-top: 16px; }
-  .course-number { font-size: 32px; letter-spacing: -1px; }
-  .about-course strong { font-size: 14px; }
-  .powerlifting-photo { width: 260px; max-width: 90%; justify-self: center; margin-block: 8px; }
-  .powerlifting-total { flex-wrap: wrap; gap: 6px 14px; }
-  .contact-links { grid-template-columns: 1fr; gap: 12px; }
-  .contact-links a { padding: 16px 18px; }
-  footer { font-size: 10px; align-items: baseline; }
-  footer a { white-space: nowrap; }
+.hero-description {
+  font-size: 16px;
+  line-height: 1.75;
+  margin: 25px 0;
 }
-@media (prefers-reduced-motion: reduce) {
-  :root { scroll-behavior: auto; }
-  *, *::before, *::after { transition: none !important; }
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 28px;
 }
-
-/* Restore the previous page appearance. */
-:root{font-family:ui-rounded,'Arial Rounded MT Bold',system-ui,sans-serif;--radius:16px;--secondary:#c3b6a2;--border:#eee0c5;--surface:#332e28;--card-outline:color-mix(in srgb,var(--fg) 24%,transparent);--shadow:#100e0c;--pastel:#b9d992}
-:root[data-theme='light']{--bg:#fff4dd;--fg:#26201a;--secondary:#655a4c;--border:#26201a;--surface:#fffdf7;--primary:#ff7043;--shadow:#26201a;--pastel:#c6e6b3}
-:root[data-theme='dark']{--bg:#26221f;--fg:#f5ead6;--secondary:#c3b6a2;--border:#eee0c5;--surface:#332e28;--primary:#ff885e}
-body{line-height:normal}
-.shell{width:min(1160px,calc(100% - 80px));max-width:1020px}
-.header{height:94px;gap:0;border-bottom:1px solid color-mix(in srgb,var(--fg) 18%,transparent)}
-.wordmark{display:block;width:auto;height:auto;background:#f5f5f5;color:#171717;border:1px solid #f5f5f5;border-radius:8px;box-shadow:none;transform:none;font-size:28px;letter-spacing:-2px;padding:2px 11px;font-weight:800;line-height:1.5}
-.wordmark span{display:inline}.wordmark span,.wordmark:hover{color:#171717}
-:root[data-theme='light'] .wordmark{background:#171717;color:#fff;border-color:#171717}
-:root[data-theme='light'] .wordmark span,:root[data-theme='light'] .wordmark:hover{color:#fff}
-nav,.header-right{gap:32px}nav{font-size:13px;font-weight:650}.contact-nav{font-size:13px;font-weight:400;gap:12px}
-.header-right button{border:0;box-shadow:none;background:transparent;color:var(--secondary);border-radius:10px}
-.hero{padding-top:58px;padding-bottom:60px}.hero-grid{grid-template-columns:1.4fr 1fr;gap:70px;margin:0}
-h1{font-weight:900;font-size:clamp(52px,6.5vw,76px);letter-spacing:-3px;line-height:1.05}
-.hero-description{font-size:16px;line-height:1.75;margin:25px 0}
-.hero-actions{margin:0;gap:28px}.hero-actions>a:first-child{border:2px solid #26201a;border-radius:12px;box-shadow:4px 4px 0 var(--shadow);color:#26201a;font-weight:750;transition:transform .15s,box-shadow .15s}
-.hero-actions>a:first-child:hover{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--shadow)}
-.text-link{gap:9px;font-size:13px;font-weight:400}
-.portrait{height:auto;aspect-ratio:4/4.5;transform:rotate(2deg);max-width:320px;justify-self:end;width:100%;border:0;border-radius:18px;box-shadow:3px 3px 0 var(--shadow);overflow:visible;background:#a5dcff}
-.portrait img{height:100%;object-fit:cover;object-position:center;border-radius:16px}
-.portrait-grid{display:none}
-.section{border-top:0;border-bottom:1px solid color-mix(in srgb,var(--fg) 18%,transparent);padding-top:45px;padding-bottom:45px}
-.about{border-top:1px solid color-mix(in srgb,var(--fg) 18%,transparent)}
-h2{font-size:28px;letter-spacing:-.8px;font-weight:850;line-height:1.15}
-.section>h2{margin-bottom:26px}.section-heading{margin-bottom:28px}
-.about-card{grid-template-columns:minmax(0,1fr) 170px;gap:0;padding:0;background:var(--surface);border:1px solid var(--card-outline);border-radius:16px;overflow:hidden;align-items:stretch}
-.about-story{grid-column:auto;grid-row:auto;padding:28px 32px}
-.university-badge{display:inline-flex;align-items:center;gap:9px;background:#a5dcff;color:#26201a;border:0;border-radius:7px;padding:7px 10px;font-size:11px;font-weight:750}
-.about-story h3{font-size:27px;font-weight:850;letter-spacing:-.7px;line-height:1.15;margin:20px 0 12px}
-.about-story p{max-width:570px;font-size:14px;line-height:1.75}
-.about-course{grid-column:auto;grid-row:auto;background:transparent;color:var(--fg);border-left:1px solid var(--card-outline);padding:24px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0}
-.course-number{font-size:66px;letter-spacing:-4px;line-height:1;font-weight:800}.about-course>strong{font-size:14px;font-weight:500;color:var(--secondary);margin-top:10px}
-.game-project{grid-template-columns:1.4fr 1fr;gap:36px;align-items:center;background:transparent;border:0;border-radius:0;overflow:visible}
-.game-preview,.game-preview img{border-radius:10px}
-.game-notes h3{font-size:28px;font-weight:750;line-height:1.2;letter-spacing:-.7px;margin:0 0 18px}
-.game-notes p{font-size:14px;line-height:1.85;color:var(--secondary);margin:0 0 14px}.game-notes p+p{margin-top:0}.game-notes p:last-child{margin-bottom:0;font-size:12px}
-.powerlifting-card{grid-template-columns:1fr 1.4fr;gap:70px;padding:0;align-items:center}
-.powerlifting-photo{grid-column:1;grid-row:1;justify-self:start;width:100%;max-width:320px;height:auto;aspect-ratio:4/4.5;object-fit:cover;object-position:center 100%;border:0;border-radius:16px;box-shadow:3px 3px 0 var(--shadow);transform:rotate(2deg)}
-.powerlifting-content{grid-column:2;grid-row:1;padding:0}
-.powerlifting-content>svg{display:none}.powerlifting-content h3{margin:0;font-size:36px;line-height:1.15;letter-spacing:-1px;font-weight:800}
-.powerlifting-content p{font-size:16px;line-height:1.75;margin:25px 0 0}
-.lift-stats{gap:12px;width:100%;margin:26px 0 0}.lift-stats>div{padding:15px 12px;background:var(--surface);border-radius:10px}
-.lift-stats dt{font-size:12px;color:var(--secondary);margin-bottom:8px}.lift-stats dd{font-size:29px;line-height:1.2;font-weight:800;letter-spacing:-1px}
-.powerlifting-total{display:flex;flex-direction:column;align-items:flex-start;width:auto;border:0;padding:0;margin-top:20px;gap:6px}
-.powerlifting-total strong{font-size:42px;letter-spacing:-2px;line-height:1.1;font-weight:850}.powerlifting-total strong span{font-size:25px;letter-spacing:0;font-weight:600}
-.contact-section{padding:45px 0 35px}
-.contact-section .shell{background:var(--surface);color:var(--fg);border:1px solid var(--card-outline);border-radius:16px;padding:28px 32px}
-.contact-section h2{font-size:28px;letter-spacing:-.8px;margin:0}
-.contact-links{grid-template-columns:1fr 1fr;gap:30px;margin-top:24px}
-.contact-links a{gap:20px;background:transparent;border-radius:0;border-top:1px solid color-mix(in srgb,var(--fg) 18%,transparent);padding:20px 0 0}
-.contact-links small{font:9px monospace;letter-spacing:1px;margin-bottom:9px}.contact-links strong{font-size:18px;font-weight:750}
-.contact-links a>svg:last-child{width:24px}
-footer{border:0;padding-top:25px;padding-bottom:35px;font-size:10px}
-@media(max-width:850px){.shell{width:calc(100% - 40px)}nav{gap:18px}.hero-grid{gap:30px}h1{letter-spacing:-4px}.hero-actions{gap:16px}}
-@media(max-width:700px){.shell{width:calc(100% - 36px)}.hero-grid{gap:30px}.portrait{max-width:280px}.hero{padding-top:40px;padding-bottom:40px}.about-story{padding:24px}.about-card{grid-template-columns:minmax(0,1fr) 130px}.about-course{padding:18px}.about-story h3{font-size:24px}.course-number{font-size:58px}.game-project{grid-template-columns:1fr;gap:24px}.game-notes{max-width:580px}.game-notes h3{margin-bottom:12px}.powerlifting-card{gap:30px}.powerlifting-photo{max-width:280px}}
-@media(min-width:601px) and (max-width:650px){.hero-grid{grid-template-columns:1.4fr 1fr}.portrait{width:100%;max-width:280px;justify-self:end;margin:0}.contact-nav{display:inline-flex}.powerlifting-card{grid-template-columns:1fr 1.4fr}.header{height:94px}.powerlifting-photo{width:100%;margin:0;justify-self:start}}
-@media(max-width:600px){.header{height:80px;gap:0}nav{gap:12px;font-size:11px}.header-right{gap:0}.contact-nav{display:none}.hero-grid{grid-template-columns:1fr}.hero{padding-top:40px;padding-bottom:40px}h1{font-size:58px;letter-spacing:-3px}.hero-description{font-size:15px}.hero-actions{gap:24px}.portrait{width:100%;justify-self:center;max-width:270px;margin:8px 0 0}.section{padding-top:35px;padding-bottom:35px}.about-card{grid-template-columns:1fr}.about-course{flex-direction:row;gap:12px;justify-content:flex-start;align-items:baseline;border-left:0;border-top:1px solid var(--card-outline);padding:16px 24px}.course-number{font-size:38px;letter-spacing:-2px}.about-course>strong{margin:0;font-size:14px}.powerlifting-card{grid-template-columns:1fr;gap:30px;padding:0}.powerlifting-photo{grid-column:1;grid-row:1;justify-self:center;max-width:270px;width:100%;margin:8px 0 0}.powerlifting-content{grid-column:1;grid-row:2;padding:0}.powerlifting-content h3{font-size:30px}.powerlifting-content p{font-size:15px}.lift-stats{gap:8px}.lift-stats>div{padding:12px 10px}.lift-stats dd{font-size:26px}.contact-section .shell{padding:24px}.contact-links{grid-template-columns:1fr;gap:24px}footer{gap:18px;flex-wrap:wrap}}
-
-/* Editorial biography: a quiet section label and one clear headline. */
-.about-editorial>h2{font-size:13px;font-weight:500;letter-spacing:0;line-height:1.5;color:var(--secondary);margin:0 0 18px}
-.about-editorial>h3{font-size:clamp(26px,3.2vw,38px);font-weight:750;letter-spacing:-1px;line-height:1.2;margin:0 0 20px;text-wrap:balance}
-.about-editorial>p{max-width:780px;font-size:16px;line-height:1.8;margin:0;color:var(--secondary)}
-.about-facts{display:flex;flex-wrap:wrap;gap:12px;list-style:none;margin:26px 0 0;padding:0}
-.about-facts li{display:inline-flex;align-items:center;gap:9px;padding:9px 15px;border:1px solid color-mix(in srgb,var(--fg) 32%,transparent);border-radius:999px;font-size:13px;color:var(--fg)}
-.about-facts svg{flex-shrink:0;color:var(--secondary)}
-.about-mobile-break{display:none}
-@media(max-width:600px){.about-editorial>h2{margin-bottom:14px}.about-editorial>h3{font-size:28px;letter-spacing:-.7px;margin-bottom:16px}.about-editorial>p{font-size:14px}.about-facts{gap:8px;margin-top:20px}.about-facts li{font-size:12px;padding:8px 12px}.about-mobile-break{display:block}}
-
-/* Enlarge the about label while preserving its original weight and color. */
-.about-editorial>h2{font-size:24px}
-@media(max-width:600px){.about-editorial>h2{font-size:22px}}
-
-/* Match all section labels to the approved About label. */
-.section>h2,.section-heading h2,.contact-section h2{
-  font-size:24px;
-  font-weight:500;
-  letter-spacing:0;
-  line-height:1.5;
-  color:var(--secondary);
+.hero-actions > a:first-child,
+.project-actions .project-primary,
+.contact-actions .contact-telegram {
+  height: 48px;
+  padding: 0 24px;
+  border: 2px solid #26201a;
+  border-radius: 12px;
+  box-shadow: 4px 4px 0 var(--shadow);
+  background: var(--primary);
+  color: #26201a;
+  font-size: 14px;
+  font-weight: 750;
 }
-@media(max-width:600px){
-  .section>h2,.section-heading h2,.contact-section h2{font-size:22px}
+.hero-actions > a:first-child:hover,
+.project-actions .project-primary:hover,
+.contact-actions .contact-telegram:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 var(--shadow);
+}
+.project-actions .project-primary:hover,
+.contact-actions .contact-telegram:hover {
+  opacity: 1;
+}
+.project-actions .project-primary:active,
+.contact-actions .contact-telegram:active {
+  transform: translate(4px, 4px);
+  box-shadow: none;
+}
+.portrait {
+  width: 100%;
+  height: auto;
+  max-width: 320px;
+  justify-self: end;
+  aspect-ratio: 4/4.5;
+  transform: rotate(2deg);
+  border: 0;
+  border-radius: 18px;
+  box-shadow: 3px 3px 0 var(--shadow);
+  background: #a5dcff;
+}
+.portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 16px;
+}
+.monogram {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--surface);
+}
+.monogram > span {
+  font-size: 90px;
+  font-weight: 750;
+}
+.monogram small {
+  font-size: 11px;
+  color: var(--secondary);
 }
 
-
-.tech-label{display:inline-block;padding:1px 7px;border-radius:5px;background:color-mix(in srgb,var(--primary) 12%,transparent);color:var(--fg);font-size:.92em;font-weight:650;line-height:1.5;vertical-align:baseline}
-
-/* Project and training sections inspired by the supplied layout. */
-.game-project{grid-template-columns:1.2fr 1fr;gap:36px}
-.game-preview,.game-preview img{border-radius:20px}
-.game-notes h3,.powerlifting-content h3{font-size:36px;line-height:1.15;font-weight:800;letter-spacing:-1px;margin:0 0 16px}
-.game-notes p,.game-notes p:last-child,.powerlifting-content p{font-size:15px;line-height:1.8;margin:0;color:var(--secondary)}
-.project-chips{display:flex;flex-wrap:wrap;gap:10px;list-style:none;padding:0;margin:22px 0}
-.project-chips li{display:inline-flex;align-items:center;gap:8px;border:1px solid color-mix(in srgb,var(--fg) 40%,transparent);border-radius:999px;padding:9px 17px;font-size:13px;line-height:1.4}
-.project-actions{display:flex;align-items:center;flex-wrap:wrap;gap:26px;margin-top:26px}
-.project-actions button{border-radius:18px;height:44px;padding-inline:20px;font-size:14px;font-weight:650}
-.project-actions button[aria-expanded='true'] svg{transform:rotate(180deg)}
-.project-more{grid-column:1/-1;padding:22px 24px;background:var(--surface);border-radius:16px}
-.project-more[hidden]{display:none}
-.project-more h4{font-size:17px;font-weight:700;margin:0 0 12px}
-.project-more p{max-width:800px;font-size:14px;line-height:1.8;margin:0;color:var(--secondary)}
-.project-more p+p{margin-top:12px}
-.powerlifting-card{grid-template-columns:340px minmax(0,1fr);gap:48px}
-.powerlifting-photo{max-width:none;width:100%;aspect-ratio:1;object-position:center 100%;transform:none;border:0;border-radius:20px;box-shadow:none}
-.lift-stats{gap:14px;margin-top:24px}
-.lift-stats>div{padding:16px 18px;border-radius:18px;background:var(--surface)}
-.lift-stats dt{display:flex;align-items:center;gap:8px;font-size:13px;margin-bottom:12px;color:var(--secondary)}
-.lift-stats dd{font-size:30px;line-height:1.1;letter-spacing:-.7px;font-weight:750}
-.lift-stats dd span{font-size:17px;color:var(--fg)}
-.powerlifting-total{position:relative;padding-left:24px;gap:5px;margin-top:24px}
-.powerlifting-total::before{content:'';position:absolute;left:0;top:5px;bottom:3px;width:6px;border-radius:999px;background:var(--primary)}
-.powerlifting-total strong{font-size:42px;font-weight:800;letter-spacing:-1px}
-.powerlifting-total strong span{font-size:24px}
-.powerlifting-total>span{font-size:13px}
-@media(max-width:850px){.powerlifting-card{grid-template-columns:280px minmax(0,1fr);gap:28px}.lift-stats{gap:8px}.lift-stats>div{padding:12px}.lift-stats dt{gap:5px;font-size:11px}.lift-stats dd{font-size:26px}.game-notes h3,.powerlifting-content h3{font-size:30px}}
-@media(max-width:700px){.game-project{grid-template-columns:1fr;gap:24px}.game-notes{max-width:none}}
-@media(max-width:600px){.powerlifting-card{grid-template-columns:1fr;gap:26px}.powerlifting-photo{max-width:320px;justify-self:center}.game-notes h3,.powerlifting-content h3{font-size:28px}.project-chips{margin:18px 0}.project-actions{margin-top:20px;gap:22px}.project-chips li{padding:8px 14px}.powerlifting-total strong{font-size:38px}.lift-stats dt{font-size:12px}.lift-stats dd{font-size:26px}.lift-stats>div{padding:14px 10px}.project-more{padding:20px}}
-
-/* Bold, straight sans-serif titles matching the supplied reference. */
-.game-notes h3,.powerlifting-content h3{
-  font-family:'Helvetica Neue',Arial,sans-serif;
-  font-weight:800;
-  letter-spacing:-1px;
+/* Biography. */
+.about {
+  border-top: 1px solid color-mix(in srgb, var(--fg) 18%, transparent);
+}
+.about-editorial > h2 {
+  margin-bottom: 18px;
+}
+.about-editorial > h3 {
+  font-size: clamp(26px, 3.2vw, 38px);
+  font-weight: 750;
+  letter-spacing: -1px;
+  line-height: 1.2;
+  margin-bottom: 20px;
+  text-wrap: balance;
+}
+.about-editorial > p {
+  max-width: 780px;
+  font-size: 16px;
+  line-height: 1.8;
+}
+.about-editorial > p + p {
+  margin-top: 16px;
 }
 
-/* Shared raised-button treatment and smoothly collapsing project details. */
-.project-actions .project-primary{
-  height:48px;padding:0 24px;border:2px solid #26201a;border-radius:12px;
-  background:var(--primary);color:#26201a;box-shadow:4px 4px 0 var(--shadow);
-  font-size:14px;font-weight:750;transition:transform .15s,box-shadow .15s;
-}
-.project-actions .project-primary:hover{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--shadow);opacity:1}
-.project-actions .project-primary:active{transform:translate(4px,4px);box-shadow:0 0 0 var(--shadow)}
-.toggle-label{display:grid}
-.toggle-label>span{grid-area:1/1;transition:opacity .2s,transform .25s}
-.toggle-label-less{opacity:0;transform:translateY(6px)}
-.project-toggle[aria-expanded='true'] .toggle-label-more{opacity:0;transform:translateY(-6px)}
-.project-toggle[aria-expanded='true'] .toggle-label-less{opacity:1;transform:translateY(0)}
-.project-toggle svg{transition:transform .3s}
-.game-project{row-gap:0}
-.project-more{display:grid;grid-template-rows:0fr;opacity:0;padding:0;background:transparent;border-radius:0;transition:grid-template-rows .32s ease,opacity .25s ease}
-.project-more[data-open='true']{grid-template-rows:1fr;opacity:1}
-.project-more-clip{min-height:0;overflow:hidden}
-.project-more-content{padding:22px 24px;margin-top:28px;background:var(--surface);border-radius:16px}
-@media(max-width:700px){.game-notes{margin-top:24px}}
-@media(max-width:600px){.project-more-content{padding:20px;margin-top:24px}}
-@media(prefers-reduced-motion:reduce){.project-more,.project-toggle,.project-toggle svg,.toggle-label>span{transition:none!important}}
-
-/* Closing invitation with a primary Telegram action. */
-.contact-section{padding:0}
-.contact-section .shell{padding:36px 0 42px;background:transparent;border:0;border-radius:0}
-.contact-section h2{margin:0 0 16px}
-.contact-invitation{font-size:22px;font-weight:600;line-height:1.4;color:var(--fg);margin:0 0 24px}
-.contact-actions{display:flex;align-items:center;flex-wrap:wrap;gap:24px 30px}
-.contact-actions .contact-telegram{height:48px;padding:0 24px;border:2px solid #26201a;border-radius:12px;box-shadow:4px 4px 0 var(--shadow);background:var(--primary);color:#26201a;font-size:14px;font-weight:750;transition:transform .15s,box-shadow .15s}
-.contact-actions .contact-telegram:hover{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--shadow);opacity:1}
-.contact-actions .contact-telegram:active{transform:translate(4px,4px);box-shadow:none}
-.contact-secondary{display:inline-flex;align-items:center;gap:8px;font-size:14px;line-height:1.5;color:var(--secondary)}
-.contact-secondary:hover{color:var(--primary)}
-.contact-secondary svg{flex-shrink:0}
-.contact-email-group{position:relative;min-width:0;max-width:100%}
-.contact-email-row{display:flex;align-items:center;gap:8px;min-height:44px}
-.contact-email-row a{min-width:0}
-.contact-email-row a span{overflow-wrap:anywhere}
-.copy-email{display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;width:36px;height:36px;padding:0;background:transparent;border:0;border-radius:8px;color:var(--secondary);transition:background .15s,color .15s}
-.copy-email:hover{color:var(--fg);background:var(--surface)}
-.copy-email:disabled{cursor:wait;opacity:.6}
-footer{border-top:1px solid color-mix(in srgb,var(--fg) 18%,transparent)}
-@media(max-width:600px){.contact-section .shell{padding:28px 0 44px}.contact-invitation{font-size:20px}.contact-actions{gap:20px 24px}.contact-email-group{flex-basis:100%}.contact-actions .contact-telegram{padding:0 16px;font-size:13px}.contact-secondary{font-size:13px}}
-
-/* Use the hero portrait's photo treatment across the page. */
-.game-preview,.powerlifting-photo{
-  border:0;
-  border-radius:16px;
-  transform:rotate(2deg);
-  box-shadow:3px 3px 0 var(--shadow);
-}
-.game-preview img{border-radius:16px}
-
-.about-editorial>p+p{margin-top:16px}
-
-/* Training results as quiet typography, not dashboard cards. */
-.lift-stats{gap:0;margin-top:24px;max-width:460px}
-.lift-stats>div{padding:0 20px;background:transparent;border-radius:0}
-.lift-stats>div:first-child{padding-left:0}
-.lift-stats>div+div{border-left:1px solid color-mix(in srgb,var(--fg) 15%,transparent)}
-.lift-stats dt{font-size:12px;font-weight:400;margin-bottom:8px}
-.lift-stats dd{font-family:'Helvetica Neue',Arial,sans-serif;font-size:25px;font-weight:600;letter-spacing:-.5px;line-height:1.2}
-.lift-stats dd span{font-size:14px;font-weight:400;color:var(--secondary)}
-.powerlifting-total{flex-direction:row;align-items:baseline;flex-wrap:wrap;gap:8px 12px;padding:18px 0 0;margin-top:22px;max-width:460px;border-top:1px solid color-mix(in srgb,var(--fg) 15%,transparent)}
-.powerlifting-total::before{display:none}
-.powerlifting-total strong{font-family:'Helvetica Neue',Arial,sans-serif;font-size:25px;font-weight:600;letter-spacing:-.5px;line-height:1.2}
-.powerlifting-total strong span{font-size:14px;font-weight:400;color:var(--secondary)}
-.powerlifting-total>span{font-size:12px}
-@media(max-width:600px){.lift-stats>div{padding:0 14px}.lift-stats>div:first-child{padding-left:0}.lift-stats dd,.powerlifting-total strong{font-size:24px}}
-
-/* Show the complete training photo at its natural aspect ratio. */
-.powerlifting-photo{aspect-ratio:auto;height:auto;object-fit:contain;object-position:center}
-
-/* Trim a little headroom while keeping the full lift visible. */
-.powerlifting-photo{aspect-ratio:4/4.6;height:auto;object-fit:cover;object-position:center bottom}
-.lift-stats dd{font-size:32px;font-weight:750;letter-spacing:-.8px;font-variant-numeric:tabular-nums}
-.lift-stats dd span{font-size:14px}
-.powerlifting-total strong{font-size:38px;font-weight:750;letter-spacing:-1px;color:var(--primary);font-variant-numeric:tabular-nums}
-.powerlifting-total strong span{font-size:16px;color:var(--secondary)}
-@media(max-width:600px){.lift-stats dd{font-size:30px}.powerlifting-total strong{font-size:34px}}
-
-/* Separate understated result tiles, without divider lines. */
-.lift-stats{gap:12px}
-.lift-stats>div,.lift-stats>div:first-child{padding:14px 16px;background:var(--surface);border:0;border-radius:12px}
-.lift-stats>div+div{border-left:0}
-.powerlifting-total{border-top:0;padding-top:0;margin-top:22px}
-@media(max-width:600px){.lift-stats{gap:8px}.lift-stats>div,.lift-stats>div:first-child{padding:12px}}
-
-/* Training section: bold results on the left, portrait on the right. */
-.powerlifting-card{grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:48px;align-items:center}
-.powerlifting-content{grid-column:1;grid-row:1}
-.powerlifting-photo{grid-column:2;grid-row:1;justify-self:end;max-width:none;width:100%;aspect-ratio:4/4.6;object-fit:cover;object-position:center bottom}
-.powerlifting-content h3{font-size:clamp(32px,4vw,48px);font-weight:850;letter-spacing:-1.8px;line-height:1.08;margin-bottom:22px}
-.powerlifting-content p{font-size:15px;line-height:1.8}
-.lift-stats{max-width:none;margin-top:30px}
-.lift-stats>div,.lift-stats>div:first-child{padding:0;background:transparent;border:0;border-radius:0}
-.lift-stats>div+div{position:relative;border:0}
-.lift-stats dt{font-size:15px;font-weight:500;color:var(--fg);margin-bottom:10px}
-.lift-stats dd{font-size:46px;font-weight:800;line-height:1.1;letter-spacing:-1.8px;white-space:nowrap}
-.lift-stats dd span{font-size:18px;letter-spacing:0;font-weight:500}
-.powerlifting-total{display:flex;flex-direction:row;align-items:center;flex-wrap:wrap;gap:16px;max-width:none;margin-top:36px;padding:0;border:0}
-.powerlifting-total strong{padding:10px 16px;background:color-mix(in srgb,var(--primary) 22%,var(--bg));border-radius:14px;color:var(--fg);font-size:40px;font-weight:800;line-height:1.15;letter-spacing:-1.2px;white-space:nowrap}
-.powerlifting-total strong span{font-size:18px;letter-spacing:0;font-weight:500;color:var(--fg)}
-.powerlifting-total>span{font-size:12px;line-height:1.5}
-@media(max-width:850px){.powerlifting-card{gap:30px}.powerlifting-content h3{font-size:32px;letter-spacing:-1px}.lift-stats dd{font-size:36px}.lift-stats dd span{font-size:15px}.powerlifting-total strong{font-size:34px}}
-@media(max-width:600px){.powerlifting-card{grid-template-columns:1fr;gap:30px}.powerlifting-content{grid-column:1;grid-row:1}.powerlifting-photo{grid-column:1;grid-row:2;max-width:320px;justify-self:center;margin:0}.powerlifting-content h3{font-size:32px}.powerlifting-content p{font-size:14px}.lift-stats{margin-top:24px}.lift-stats dt{font-size:13px}.lift-stats dd{font-size:36px;letter-spacing:-1px}.powerlifting-total{margin-top:30px;padding:0;gap:12px}.powerlifting-total strong{font-size:34px;padding:10px 14px}}
-
-/* A little more weight on the result numbers only. */
-.lift-stats dd,.powerlifting-total strong{font-weight:900;-webkit-text-stroke:.25px currentColor}
-.lift-stats dd span,.powerlifting-total strong span{-webkit-text-stroke:0}
-
-/* Shared project layout and visual treatment. */
+/* Projects share one layout and media treatment. */
 .game-project {
   --project-media-radius: 16px;
   --project-media-shadow: 3px 3px 0 var(--shadow), 0 3px 4px #0002;
+  display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  column-gap: 36px;
-  row-gap: 0;
+  gap: 0 36px;
   align-items: center;
+  border: 0;
 }
-.game-project > .game-notes { min-width: 0; margin: 0; }
-.game-project .game-notes h3 {
-  font-family: 'Helvetica Neue', Arial, sans-serif;
+.game-preview {
+  display: block;
+  overflow: hidden;
+  border: 0;
+  transform: rotate(2deg);
+}
+.game-preview,
+.nullwise-video {
+  border-radius: var(--project-media-radius);
+  box-shadow: var(--project-media-shadow);
+}
+.game-preview img {
+  width: 100%;
+  height: auto;
+  border-radius: inherit;
+}
+.game-notes {
+  min-width: 0;
+}
+.game-notes h3 {
+  font-family: "Helvetica Neue", Arial, sans-serif;
   font-size: 36px;
   font-weight: 800;
   line-height: 1.15;
   letter-spacing: -1px;
-  margin: 0 0 16px;
+  margin-bottom: 16px;
 }
-.game-project .game-notes > p { font-size: 15px; line-height: 1.8; margin: 0; }
-.game-project .project-chips { gap: 8px; margin: 22px 0 0; }
-.game-project .project-chips li {
+.game-notes > p {
+  font-size: 15px;
+  line-height: 1.8;
+}
+.project-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+  margin: 22px 0 0;
+}
+.project-chips li {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   border: 1px solid color-mix(in srgb, var(--fg) 40%, transparent);
   border-radius: 999px;
   background: transparent;
@@ -430,19 +363,102 @@ footer{border-top:1px solid color-mix(in srgb,var(--fg) 18%,transparent)}
   font-weight: 650;
   line-height: 1.4;
 }
-.game-project .project-actions { margin-top: 26px; gap: 26px; }
-.game-project .game-preview,
-.game-project .nullwise-video {
-  border-radius: var(--project-media-radius);
-  box-shadow: var(--project-media-shadow);
+.project-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 26px;
+  margin-top: 26px;
 }
-.game-project .game-preview img { border-radius: inherit; }
 
-/* The same grid with the second project's media on the right. */
+/* Expandable Fortbonk notes. */
+.project-more {
+  grid-column: 1/-1;
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition:
+    grid-template-rows 0.32s ease,
+    opacity 0.25s ease;
+}
+.project-more[data-open="true"] {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+.project-more-clip {
+  min-height: 0;
+  overflow: hidden;
+}
+.project-more-content {
+  padding: 22px 24px;
+  margin-top: 28px;
+  background: var(--surface);
+  border-radius: 16px;
+}
+.project-more h4 {
+  font-size: 17px;
+  font-weight: 700;
+  margin: 0 0 12px;
+}
+.project-more p {
+  max-width: 800px;
+  font-size: 14px;
+  line-height: 1.8;
+}
+.project-more p + p {
+  margin-top: 12px;
+}
+.project-toggle[aria-expanded="true"] svg {
+  transform: rotate(180deg);
+}
+.project-toggle svg {
+  transition: transform 0.3s;
+}
+.toggle-label {
+  display: grid;
+}
+.toggle-label > span {
+  grid-area: 1/1;
+  transition:
+    opacity 0.2s,
+    transform 0.25s;
+}
+.toggle-label-less {
+  opacity: 0;
+  transform: translateY(6px);
+}
+.project-toggle[aria-expanded="true"] .toggle-label-more {
+  opacity: 0;
+  transform: translateY(-6px);
+}
+.project-toggle[aria-expanded="true"] .toggle-label-less {
+  opacity: 1;
+  transform: translateY(0);
+}
+.fortbonk-details .fortbonk-details-intro {
+  max-width: 860px;
+}
+.fortbonk-details-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px 32px;
+  margin-top: 24px;
+}
+.fortbonk-details-grid h5 {
+  margin: 0 0 8px;
+  color: var(--fg);
+  font-size: 15px;
+  line-height: 1.4;
+  font-weight: 650;
+}
+.fortbonk-details .fortbonk-details-status {
+  margin-top: 24px;
+  font-size: 13px;
+}
+
+/* Nullwise covers and results. */
 .nullwise-project {
   margin-top: 110px;
-  padding-top: 0;
-  border-top: 0;
 }
 .nullwise-gallery {
   grid-column: 2;
@@ -454,13 +470,35 @@ footer{border-top:1px solid color-mix(in srgb,var(--fg) 18%,transparent)}
   padding: 8px 6px;
   min-width: 0;
 }
-.nullwise-notes { grid-column: 1; grid-row: 1; }
-.nullwise-video { overflow: hidden; background: #000; border: 1px solid #ffffff40; }
-:root[data-theme='dark'] .nullwise-video { border-color: #f5ead666; }
-.nullwise-video img { display: block; width: 100%; height: auto; aspect-ratio: 941/1672; object-fit: contain; }
-.nullwise-video-cubes { margin-top: 24px; transform: rotate(-3deg); }
-.nullwise-video-galton { transform: rotate(1deg); }
-.nullwise-video-knight { margin-top: 30px; transform: rotate(3deg); }
+.nullwise-notes {
+  grid-column: 1;
+  grid-row: 1;
+}
+.nullwise-video {
+  overflow: hidden;
+  background: #000;
+  border: 1px solid #ffffff40;
+}
+:root[data-theme="dark"] .nullwise-video {
+  border-color: #f5ead666;
+}
+.nullwise-video img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 941/1672;
+  object-fit: contain;
+}
+.nullwise-video-cubes {
+  margin-top: 24px;
+  transform: rotate(-3deg);
+}
+.nullwise-video-galton {
+  transform: rotate(1deg);
+}
+.nullwise-video-knight {
+  margin-top: 30px;
+  transform: rotate(3deg);
+}
 .nullwise-views {
   display: flex;
   align-items: center;
@@ -468,33 +506,62 @@ footer{border-top:1px solid color-mix(in srgb,var(--fg) 18%,transparent)}
   padding: 10px 10px 12px;
   color: #f5ead6;
   background: #101010;
-  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-family: "Helvetica Neue", Arial, sans-serif;
   font-size: 13px;
   font-weight: 600;
   line-height: 1.3;
 }
-.nullwise-views svg { flex-shrink: 0; color: #c3b6a2; }
-.nullwise-results { margin-top: 22px; }
-.nullwise-results-label { display: block; font-size: 11px; color: var(--secondary); margin-bottom: 10px; }
-.nullwise-stats { margin: 0; }
-.nullwise-stats > div { display: flex; flex-direction: column; gap: 6px; }
+.nullwise-views svg {
+  flex-shrink: 0;
+  color: #c3b6a2;
+}
+.nullwise-results {
+  margin-top: 22px;
+}
+.nullwise-results-label {
+  display: block;
+  font-size: 11px;
+  color: var(--secondary);
+  margin-bottom: 10px;
+}
+.nullwise-stats > div {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.nullwise-stats dd {
+  order: -1;
+  margin: 0;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 30px;
+  font-weight: 800;
+  letter-spacing: -1px;
+  line-height: 1.1;
+}
+.nullwise-stats dt {
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--secondary);
+}
 
-/* Equal statistic columns; each line is centred in the gap between them. */
-.lift-stats, .nullwise-stats {
+/* Shared statistic columns and centred dividers. */
+.lift-stats,
+.nullwise-stats {
   --stats-gap: 22px;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   column-gap: var(--stats-gap);
   text-align: left;
 }
-.lift-stats > div, .nullwise-stats > div {
+.lift-stats > div,
+.nullwise-stats > div {
   position: relative;
   min-width: 0;
   padding: 0;
-  border-left: 0;
 }
-.lift-stats > div + div::before, .nullwise-stats > div + div::before {
-  content: '';
+.lift-stats > div + div::before,
+.nullwise-stats > div + div::before {
+  content: "";
   position: absolute;
   left: calc(var(--stats-gap) / -2);
   top: 50%;
@@ -503,45 +570,191 @@ footer{border-top:1px solid color-mix(in srgb,var(--fg) 18%,transparent)}
   transform: translate(-50%, -50%);
   background: color-mix(in srgb, var(--fg) 25%, transparent);
 }
-.nullwise-stats dd { order: -1; margin: 0; font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 30px; font-weight: 800; letter-spacing: -1px; line-height: 1.1; }
-.nullwise-stats dt { font-size: 12px; line-height: 1.4; color: var(--secondary); }
-@media (max-width: 850px) {
-  .game-project { column-gap: 28px; }
-  .game-project .game-notes h3 { font-size: 30px; }
-  .nullwise-gallery { gap: 8px; }
-  .lift-stats, .nullwise-stats { --stats-gap: 12px; }
-  .nullwise-stats dd { font-size: 27px; }
-  .nullwise-views { font-size: 11px; padding: 9px 8px; gap: 5px; }
+
+/* Training. */
+.interests > h2 {
+  margin-bottom: 20px;
 }
-@media (max-width: 700px) {
-  .game-project { grid-template-columns: minmax(0, 1fr); }
-  .game-project > .game-notes { margin-top: 24px; }
-  .nullwise-project { margin-top: 100px; }
-  .nullwise-gallery { grid-column: 1; grid-row: 1; width: 100%; max-width: 520px; justify-self: center; }
-  .nullwise-notes { grid-column: 1; grid-row: 2; }
-  .nullwise-stats { max-width: 400px; }
+.powerlifting-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+  gap: 48px;
+  align-items: center;
 }
-@media (max-width: 600px) {
-  .game-project .game-notes h3 { font-size: 28px; }
-  .game-project .project-chips { margin-top: 18px; }
-  .game-project .project-actions { margin-top: 20px; gap: 22px; }
+.powerlifting-photo {
+  grid-column: 1;
+  grid-row: 1;
+  justify-self: start;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4/4.6;
+  object-fit: cover;
+  object-position: center bottom;
+  border: 0;
+  border-radius: 16px;
+  transform: rotate(2deg);
+  box-shadow: 3px 3px 0 var(--shadow);
 }
-@media (max-width: 400px) {
-  .nullwise-views { font-size: 10px; padding: 8px 5px; gap: 4px; }
-  .nullwise-views svg { width: 12px; height: 12px; }
+.powerlifting-content {
+  grid-column: 2;
+  grid-row: 1;
+}
+.powerlifting-content h3 {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 850;
+  letter-spacing: -1.8px;
+  line-height: 1.08;
+  margin-bottom: 22px;
+}
+.powerlifting-content p {
+  font-size: 15px;
+  line-height: 1.8;
+}
+.lift-stats {
+  width: 100%;
+  margin-top: 30px;
+  row-gap: 12px;
+}
+.lift-stats dt {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--fg);
+  margin-bottom: 10px;
+}
+.lift-stats dd {
+  margin: 0;
+  font-size: 46px;
+  line-height: 1.1;
+  letter-spacing: -1.8px;
+  white-space: nowrap;
+}
+.lift-stats dd,
+.powerlifting-total strong {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-weight: 900;
+  font-variant-numeric: tabular-nums;
+  -webkit-text-stroke: 0.25px currentColor;
+}
+.lift-stats dd span {
+  font-size: 18px;
+  letter-spacing: 0;
+  font-weight: 500;
+  color: var(--secondary);
+  -webkit-text-stroke: 0;
+}
+.powerlifting-total {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 36px;
+  border: 0;
+}
+.powerlifting-total strong {
+  padding: 10px 16px;
+  background: color-mix(in srgb, var(--primary) 22%, var(--bg));
+  border-radius: 14px;
+  color: var(--fg);
+  font-size: 40px;
+  line-height: 1.15;
+  letter-spacing: -1.2px;
+  white-space: nowrap;
+}
+.powerlifting-total strong span {
+  font-size: 18px;
+  letter-spacing: 0;
+  font-weight: 500;
+  color: var(--fg);
+  -webkit-text-stroke: 0;
+}
+.powerlifting-total > span {
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--secondary);
 }
 
-/* Slightly tighter spacing below the training section heading. */
-.interests > h2 { margin-bottom: 20px; }
-
-/* Keep the training photo on the left. */
-.powerlifting-card{grid-template-columns:minmax(0,1fr) minmax(0,1.4fr)}
-.powerlifting-photo{grid-column:1;grid-row:1;justify-self:start}
-.powerlifting-content{grid-column:2;grid-row:1}
-@media(max-width:600px){.powerlifting-card{grid-template-columns:1fr}.powerlifting-photo{grid-column:1;grid-row:1;justify-self:center}.powerlifting-content{grid-column:1;grid-row:2}}
-
-/* Compact clipboard feedback anchored to the copy button. */
-.copy-email-anchor { position: relative; display: inline-flex; flex-shrink: 0; }
+/* Contacts. */
+.contact-section .shell {
+  padding: 36px 0 42px;
+}
+.contact-section h2 {
+  margin-bottom: 16px;
+}
+.contact-invitation {
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--fg);
+  margin-bottom: 24px;
+}
+.contact-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px 30px;
+}
+.contact-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--secondary);
+}
+.contact-secondary:hover {
+  color: var(--primary);
+}
+.contact-secondary svg {
+  flex-shrink: 0;
+}
+.contact-email-group {
+  position: relative;
+  min-width: 0;
+  max-width: 100%;
+}
+.contact-email-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+}
+.contact-email-row a {
+  min-width: 0;
+}
+.contact-email-row a span {
+  overflow-wrap: anywhere;
+}
+.copy-email {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  border-radius: 8px;
+  color: var(--secondary);
+}
+.copy-email:hover {
+  color: var(--fg);
+  background: var(--surface);
+}
+.copy-email:disabled {
+  cursor: wait;
+  opacity: 0.6;
+}
+.copy-email-anchor {
+  position: relative;
+  display: inline-flex;
+  flex-shrink: 0;
+}
 .copy-toast {
   position: absolute;
   z-index: 10;
@@ -557,31 +770,290 @@ footer{border-top:1px solid color-mix(in srgb,var(--fg) 18%,transparent)}
   background: #edf8ef;
   color: #245335;
   box-shadow: 0 3px 8px #0002;
-  font: 500 12px/1.4 system-ui, sans-serif;
+  font:
+    500 12px/1.4 system-ui,
+    sans-serif;
   white-space: nowrap;
   opacity: 0;
   visibility: hidden;
   transform: translateY(4px);
   pointer-events: none;
-  transition: opacity .18s ease, transform .2s var(--motion-ease), visibility 0s .2s;
+  transition:
+    opacity 0.18s ease,
+    transform 0.2s var(--motion-ease),
+    visibility 0s 0.2s;
 }
-.copy-toast[data-open='true'] {
+.copy-toast[data-open="true"] {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
   transition-delay: 0s;
 }
-.copy-toast svg { flex-shrink: 0; }
-.copy-toast[data-kind='error'] { background: var(--surface); color: var(--fg); border-color: var(--card-outline); }
-.copy-toast[data-kind='error'] svg { color: var(--primary); }
-:root[data-theme='dark'] .copy-toast[data-kind='success'] { background: #223c2b; color: #dcf4e3; border-color: #42674e; }
+.copy-toast svg {
+  flex-shrink: 0;
+}
+.copy-toast[data-kind="error"] {
+  background: var(--surface);
+  color: var(--fg);
+  border-color: var(--card-outline);
+}
+.copy-toast[data-kind="error"] svg {
+  color: var(--primary);
+}
+:root[data-theme="dark"] .copy-toast[data-kind="success"] {
+  background: #223c2b;
+  color: #dcf4e3;
+  border-color: #42674e;
+}
+footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 25px 0 35px;
+  border-top: 1px solid color-mix(in srgb, var(--fg) 18%, transparent);
+  color: var(--secondary);
+  font-size: 10px;
+}
 
-/* Expanded game notes keep short, readable columns inside the existing panel. */
-.fortbonk-details .fortbonk-details-intro { max-width: 860px; }
-.fortbonk-details-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 32px; margin-top: 24px; }
-.fortbonk-details-grid h5 { margin: 0 0 8px; color: var(--fg); font-size: 15px; line-height: 1.4; font-weight: 650; }
-.fortbonk-details .fortbonk-details-status { margin-top: 24px; font-size: 13px; }
+/* Responsive changes, grouped by breakpoint. */
+@media (max-width: 850px) {
+  .shell {
+    width: calc(100% - 40px);
+  }
+  nav {
+    gap: 18px;
+  }
+  .hero-grid {
+    gap: 30px;
+  }
+  h1 {
+    letter-spacing: -4px;
+  }
+  .hero-actions {
+    gap: 16px;
+  }
+  .game-project {
+    column-gap: 28px;
+  }
+  .game-notes h3 {
+    font-size: 30px;
+  }
+  .nullwise-gallery {
+    gap: 8px;
+  }
+  .lift-stats,
+  .nullwise-stats {
+    --stats-gap: 12px;
+  }
+  .nullwise-stats dd {
+    font-size: 27px;
+  }
+  .nullwise-views {
+    font-size: 11px;
+    padding: 9px 8px;
+    gap: 5px;
+  }
+  .powerlifting-card {
+    gap: 30px;
+  }
+  .powerlifting-content h3 {
+    font-size: 32px;
+    letter-spacing: -1px;
+  }
+  .lift-stats dt {
+    gap: 5px;
+  }
+  .lift-stats dd {
+    font-size: 36px;
+  }
+  .lift-stats dd span {
+    font-size: 15px;
+  }
+  .powerlifting-total strong {
+    font-size: 34px;
+  }
+}
 @media (max-width: 700px) {
-  .fortbonk-details-grid { grid-template-columns: 1fr; gap: 20px; margin-top: 20px; }
-  .fortbonk-details .fortbonk-details-status { margin-top: 20px; }
+  .shell {
+    width: calc(100% - 36px);
+  }
+  .hero {
+    padding-block: 40px;
+  }
+  .portrait {
+    max-width: 280px;
+  }
+  .game-project {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .game-notes {
+    margin-top: 24px;
+  }
+  .nullwise-project {
+    margin-top: 100px;
+  }
+  .nullwise-gallery {
+    grid-column: 1;
+    grid-row: 1;
+    width: 100%;
+    max-width: 520px;
+    justify-self: center;
+  }
+  .nullwise-notes {
+    grid-column: 1;
+    grid-row: 2;
+  }
+  .nullwise-stats {
+    max-width: 400px;
+  }
+  .fortbonk-details-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-top: 20px;
+  }
+  .fortbonk-details .fortbonk-details-status {
+    margin-top: 20px;
+  }
+}
+@media (max-width: 650px) {
+  .hero-actions {
+    flex-wrap: wrap;
+  }
+  footer {
+    align-items: baseline;
+  }
+  footer a {
+    white-space: nowrap;
+  }
+}
+@media (max-width: 600px) {
+  .header {
+    height: 80px;
+  }
+  nav {
+    gap: 12px;
+    font-size: 11px;
+  }
+  .header-right {
+    gap: 0;
+  }
+  .contact-nav {
+    display: none;
+  }
+  .hero-grid {
+    grid-template-columns: 1fr;
+  }
+  h1 {
+    font-size: 58px;
+    letter-spacing: -3px;
+  }
+  .hero-description {
+    font-size: 15px;
+  }
+  .hero-actions {
+    gap: 24px;
+  }
+  .portrait {
+    justify-self: center;
+    max-width: 270px;
+    margin: 8px 0 0;
+  }
+  .section {
+    padding-block: 35px;
+  }
+  .section > h2,
+  .section-heading h2,
+  .contact-section h2 {
+    font-size: 22px;
+  }
+  .about-editorial > h2 {
+    margin-bottom: 14px;
+  }
+  .about-editorial > h3 {
+    font-size: 28px;
+    letter-spacing: -0.7px;
+    margin-bottom: 16px;
+  }
+  .about-editorial > p {
+    font-size: 14px;
+  }
+  .game-notes h3 {
+    font-size: 28px;
+  }
+  .project-chips {
+    margin-top: 18px;
+  }
+  .project-actions {
+    margin-top: 20px;
+    gap: 22px;
+  }
+  .project-more-content {
+    padding: 20px;
+    margin-top: 24px;
+  }
+  .powerlifting-card {
+    grid-template-columns: 1fr;
+  }
+  .powerlifting-photo {
+    max-width: 320px;
+    justify-self: center;
+  }
+  .powerlifting-content {
+    grid-column: 1;
+    grid-row: 2;
+  }
+  .powerlifting-content p {
+    font-size: 14px;
+  }
+  .lift-stats {
+    margin-top: 24px;
+    row-gap: 8px;
+  }
+  .lift-stats dt {
+    font-size: 13px;
+  }
+  .lift-stats dd {
+    letter-spacing: -1px;
+  }
+  .powerlifting-total {
+    margin-top: 30px;
+    gap: 12px;
+  }
+  .powerlifting-total strong {
+    padding: 10px 14px;
+  }
+  .contact-section .shell {
+    padding: 28px 0 44px;
+  }
+  .contact-invitation {
+    font-size: 20px;
+  }
+  .contact-actions {
+    gap: 20px 24px;
+  }
+  .contact-email-group {
+    flex-basis: 100%;
+  }
+  .contact-actions .contact-telegram {
+    padding: 0 16px;
+    font-size: 13px;
+  }
+  .contact-secondary {
+    font-size: 13px;
+  }
+  footer {
+    gap: 18px;
+    flex-wrap: wrap;
+  }
+}
+@media (max-width: 400px) {
+  .nullwise-views {
+    font-size: 10px;
+    padding: 8px 5px;
+    gap: 4px;
+  }
+  .nullwise-views svg {
+    width: 12px;
+    height: 12px;
+  }
 }

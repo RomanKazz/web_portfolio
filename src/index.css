@@ -312,20 +312,28 @@ footer{border:0;padding-top:25px;padding-bottom:35px;font-size:10px}
 @media(max-width:600px){.project-more-content{padding:20px;margin-top:24px}}
 @media(prefers-reduced-motion:reduce){.project-more,.project-toggle,.project-toggle svg,.toggle-label>span{transition:none!important}}
 
-/* Compact, understated contact links. */
+/* Closing invitation with a primary Telegram action. */
 .contact-section{padding:0}
-.contact-section .shell{padding:28px 0;background:transparent;border:0;border-radius:0}
-.contact-section h2{margin:0 0 20px}
-.contact-links{display:flex;flex-wrap:wrap;align-items:center;gap:20px 48px;margin:0}
-.contact-links a{display:inline-flex;align-items:center;gap:10px;min-width:0;padding:6px 0;background:transparent;border:0;border-radius:0;transition:color .18s}
-.contact-links a:hover{background:transparent;color:var(--primary)}
-.contact-links a>svg:first-child{width:20px;height:20px;flex-shrink:0;stroke-width:1.6;color:var(--secondary)}
-.contact-links a>div{min-width:0}
-.contact-links small{display:block;font:inherit;font-size:11px;color:var(--secondary);letter-spacing:0;margin-bottom:3px}
-.contact-links strong{display:block;font-family:'Helvetica Neue',Arial,sans-serif;font-size:14px;font-weight:500;line-height:1.45;overflow-wrap:anywhere}
-.contact-links a>svg:last-child{width:12px;height:12px;margin-left:0;flex-shrink:0;color:var(--secondary);opacity:.65}
+.contact-section .shell{padding:36px 0 42px;background:transparent;border:0;border-radius:0}
+.contact-section h2{margin:0 0 16px}
+.contact-invitation{font-size:22px;font-weight:600;line-height:1.4;color:var(--fg);margin:0 0 24px}
+.contact-actions{display:flex;align-items:center;flex-wrap:wrap;gap:24px 30px}
+.contact-actions .contact-telegram{height:48px;padding:0 24px;border:2px solid #26201a;border-radius:12px;box-shadow:4px 4px 0 var(--shadow);background:var(--primary);color:#26201a;font-size:14px;font-weight:750;transition:transform .15s,box-shadow .15s}
+.contact-actions .contact-telegram:hover{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--shadow);opacity:1}
+.contact-actions .contact-telegram:active{transform:translate(4px,4px);box-shadow:none}
+.contact-secondary{display:inline-flex;align-items:center;gap:8px;font-size:14px;line-height:1.5;color:var(--secondary)}
+.contact-secondary:hover{color:var(--primary)}
+.contact-secondary svg{flex-shrink:0}
+.contact-email-group{position:relative;min-width:0;max-width:100%}
+.contact-email-row{display:flex;align-items:center;gap:8px;min-height:44px}
+.contact-email-row a{min-width:0}
+.contact-email-row a span{overflow-wrap:anywhere}
+.copy-email{display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;width:36px;height:36px;padding:0;background:transparent;border:0;border-radius:8px;color:var(--secondary);transition:background .15s,color .15s}
+.copy-email:hover{color:var(--fg);background:var(--surface)}
+.copy-email:disabled{cursor:wait;opacity:.6}
+.copy-feedback{position:absolute;top:100%;left:26px;font-size:11px;line-height:1.5;color:var(--secondary)}
 footer{border-top:1px solid color-mix(in srgb,var(--fg) 18%,transparent)}
-@media(max-width:600px){.contact-links{flex-direction:column;align-items:flex-start;gap:14px}.contact-section .shell{padding:28px 0}.contact-links a{max-width:100%;padding:4px 0}}
+@media(max-width:600px){.contact-section .shell{padding:28px 0 44px}.contact-invitation{font-size:20px}.contact-actions{gap:20px 24px}.contact-email-group{flex-basis:100%}.contact-actions .contact-telegram{padding:0 16px;font-size:13px}.contact-secondary{font-size:13px}}
 
 /* Use the hero portrait's photo treatment across the page. */
 .game-preview,.powerlifting-photo{

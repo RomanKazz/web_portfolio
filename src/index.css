@@ -445,3 +445,15 @@ footer{border-top:1px solid color-mix(in srgb,var(--fg) 18%,transparent)}
 .powerlifting-content{grid-column:2;grid-row:1}
 @media(max-width:700px){.nullwise-project{grid-template-columns:1fr}.nullwise-gallery{grid-column:1;grid-row:1}.nullwise-notes{grid-column:1;grid-row:2}}
 @media(max-width:600px){.powerlifting-card{grid-template-columns:1fr}.powerlifting-photo{grid-column:1;grid-row:1;justify-self:center}.powerlifting-content{grid-column:1;grid-row:2}}
+
+/* Distinct dark thumbnail edges and readable view counts in both themes. */
+.nullwise-video{border:1px solid #ffffff40;box-shadow:0 10px 22px #0004,0 2px 5px #0003}
+:root[data-theme='dark'] .nullwise-video{border-color:#f5ead666;box-shadow:0 10px 24px #0007,0 0 18px #ff885e12}
+.nullwise-views{display:flex;align-items:center;gap:7px;padding:10px 12px 12px;color:#f5ead6;background:#101010;font-family:'Helvetica Neue',Arial,sans-serif;font-size:13px;font-weight:600;line-height:1.3}
+.nullwise-views svg{flex-shrink:0;color:#c3b6a2}
+.nullwise-stats{gap:0}
+.nullwise-stats>div{padding:0 16px}
+.nullwise-stats>div:first-child{padding-left:0}
+.nullwise-stats>div+div{border-left:1px solid color-mix(in srgb,var(--fg) 25%,transparent)}
+@media(max-width:850px){.nullwise-stats>div{padding:0 12px}.nullwise-stats>div:first-child{padding-left:0}.nullwise-views{font-size:11px;padding:9px 8px;gap:5px}}
+@media(max-width:400px){.nullwise-views{font-size:10px;padding:8px 5px;gap:4px}.nullwise-views svg{width:12px;height:12px}}

@@ -1,19 +1,20 @@
-import { ArrowUpRight, Instagram } from 'lucide-react';
+import { ArrowUpRight, Instagram, Eye } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const covers = [
-  { className: 'nullwise-video-cubes', src: 'nullwise-cubes.png', alt: 'Обложка видео «Кубы считают π?»' },
-  { className: 'nullwise-video-galton', src: 'nullwise-galton.png', alt: 'Обложка видео «Доска Гальтона»' },
-  { className: 'nullwise-video-knight', src: 'nullwise-knight.png', alt: 'Обложка видео «Обход конём — вся доска?»' },
+  { className: 'nullwise-video-cubes', src: 'nullwise-cubes.png', views: '6,8 млн', alt: 'Обложка видео «Кубы считают π?»' },
+  { className: 'nullwise-video-galton', src: 'nullwise-galton.png', views: '2,7 млн', alt: 'Обложка видео «Доска Гальтона»' },
+  { className: 'nullwise-video-knight', src: 'nullwise-knight.png', views: '1,9 млн', alt: 'Обложка видео «Обход конём — вся доска?»' },
 ];
 
 export function NullwiseProject() {
   return (
     <article className="game-project nullwise-project">
       <div className="nullwise-gallery" aria-label="Примеры видео nullwise">
-        {covers.map(({ className, src, alt }) => (
+        {covers.map(({ className, src, alt, views }) => (
           <div className={`nullwise-video ${className}`} key={className}>
             <img src={`${import.meta.env.BASE_URL}${src}`} alt={alt} loading="lazy" width="941" height="1672" />
+            <div className="nullwise-views" aria-label={`${views} просмотров`}><Eye size={15} aria-hidden="true"/><span>{views}</span></div>
           </div>
         ))}
       </div>

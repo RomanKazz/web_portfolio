@@ -343,3 +343,5 @@ footer{border-top:1px solid color-mix(in srgb,var(--fg) 18%,transparent)}
   box-shadow:3px 3px 0 var(--shadow);
 }
 .game-preview img{border-radius:16px}
+
+.about-editorial>p+p{margin-top:16px}

@@ -33,7 +33,7 @@ export function NullwiseProject() {
           <li>Manim</li><li>Fish Audio</li><li>ИИ-агенты</li><li>After Effects</li>
         </ul>
         <div className="project-actions">
-          <Button asChild className="nullwise-link"><a href="https://www.youtube.com/@nullwise_ru" target="_blank" rel="noreferrer">YouTube <ArrowUpRight size={17}/></a></Button>
+          <Button asChild className="project-primary"><a href="https://www.youtube.com/@nullwise_ru" target="_blank" rel="noreferrer">YouTube <ArrowUpRight size={17}/></a></Button>
           <a className="text-link" href="https://www.instagram.com/nullwise_ru/" target="_blank" rel="noreferrer"><Instagram size={18}/> Instagram <ArrowUpRight size={14}/></a>
         </div>
       </div>

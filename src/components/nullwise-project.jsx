@@ -2,18 +2,18 @@ import { ArrowUpRight, Instagram } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const covers = [
-  { className: 'nullwise-video-cubes', alt: 'Обложка видео «Кубы считают π?» — 6,8 млн просмотров' },
-  { className: 'nullwise-video-galton', alt: 'Обложка видео «Доска Гальтона» — 2,7 млн просмотров' },
-  { className: 'nullwise-video-knight', alt: 'Обложка видео «Обход конём — вся доска?» — 1,9 млн просмотров' },
+  { className: 'nullwise-video-cubes', src: 'nullwise-cubes.png', alt: 'Обложка видео «Кубы считают π?»' },
+  { className: 'nullwise-video-galton', src: 'nullwise-galton.png', alt: 'Обложка видео «Доска Гальтона»' },
+  { className: 'nullwise-video-knight', src: 'nullwise-knight.png', alt: 'Обложка видео «Обход конём — вся доска?»' },
 ];
 
 export function NullwiseProject() {
   return (
     <article className="game-project nullwise-project">
       <div className="nullwise-gallery" aria-label="Примеры видео nullwise">
-        {covers.map(({ className, alt }) => (
+        {covers.map(({ className, src, alt }) => (
           <div className={`nullwise-video ${className}`} key={className}>
-            <img src={`${import.meta.env.BASE_URL}nullwise-reference.jpg`} alt={alt} loading="lazy" width="1448" height="1086" />
+            <img src={`${import.meta.env.BASE_URL}${src}`} alt={alt} loading="lazy" width="941" height="1672" />
           </div>
         ))}
       </div>

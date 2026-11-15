@@ -416,17 +416,14 @@ footer{border-top:1px solid color-mix(in srgb,var(--fg) 18%,transparent)}
 @media(max-width:700px){.nullwise-project{margin-top:36px;padding-top:32px}.nullwise-cover{max-width:none}}
 @media(max-width:600px){.nullwise-cover{padding:20px}.nullwise-wordmark{font-size:44px}.nullwise-formula{font-size:22px}.nullwise-cover-label,.nullwise-cover-footer{font-size:8px}}
 
-/* Nullwise: three actual covers from the supplied reference, displayed as crops. */
+/* Original video thumbnails, shown uncropped in a staggered composition. */
 .nullwise-project{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:36px}
-.nullwise-gallery{display:grid;grid-template-columns:240fr 256fr 250fr;gap:12px;align-items:start;padding:8px 0 18px;min-width:0}
-.nullwise-video{position:relative;overflow:hidden;background:#111;border-radius:12px;filter:drop-shadow(0 8px 8px #0002)}
-.nullwise-video img{position:absolute;max-width:none;height:auto;display:block}
-.nullwise-video-cubes{aspect-ratio:240/460;margin-top:48px;clip-path:polygon(0 3%,97% 0,100% 96%,1% 100%)}
-.nullwise-video-cubes img{width:603.3333%;left:-266.6667%;top:-84.3478%}
-.nullwise-video-galton{aspect-ratio:256/500;clip-path:polygon(0 1.5%,100% 0,100% 100%,0 100%)}
-.nullwise-video-galton img{width:565.625%;left:-347.65625%;top:-56%}
-.nullwise-video-knight{aspect-ratio:250/468;margin-top:48px;clip-path:polygon(0 2%,100% 0,100% 100%,0 98%)}
-.nullwise-video-knight img{width:579.2%;left:-464%;top:-82.0513%}
+.nullwise-gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;align-items:start;padding:8px 6px 18px;min-width:0}
+.nullwise-video{overflow:hidden;background:#000;border-radius:12px;box-shadow:3px 4px 0 var(--shadow),0 8px 14px #0002}
+.nullwise-video img{display:block;width:100%;height:auto;aspect-ratio:941/1672;object-fit:contain}
+.nullwise-video-cubes{margin-top:42px;transform:rotate(-3deg)}
+.nullwise-video-galton{transform:rotate(1deg)}
+.nullwise-video-knight{margin-top:48px;transform:rotate(3deg)}
 .nullwise-notes h3{font-size:44px;letter-spacing:-1.5px;margin-bottom:18px}
 .nullwise-results{margin-top:22px}
 .nullwise-results-label{display:block;font-size:11px;color:var(--secondary);margin-bottom:10px}

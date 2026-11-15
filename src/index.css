@@ -389,3 +389,7 @@ footer{border-top:1px solid color-mix(in srgb,var(--fg) 18%,transparent)}
 .powerlifting-total>span{font-size:12px;line-height:1.5}
 @media(max-width:850px){.powerlifting-card{gap:30px}.powerlifting-content h3{font-size:32px;letter-spacing:-1px}.lift-stats{gap:12px}.lift-stats dd{font-size:36px}.lift-stats dd span{font-size:15px}.powerlifting-total strong{font-size:34px}}
 @media(max-width:600px){.powerlifting-card{grid-template-columns:1fr;gap:30px}.powerlifting-content{grid-column:1;grid-row:1}.powerlifting-photo{grid-column:1;grid-row:2;max-width:320px;justify-self:center;margin:0}.powerlifting-content h3{font-size:32px}.powerlifting-content p{font-size:14px}.lift-stats{gap:12px;margin-top:24px}.lift-stats dt{font-size:13px}.lift-stats dd{font-size:36px;letter-spacing:-1px}.powerlifting-total{margin-top:22px;padding-top:18px;gap:12px}.powerlifting-total strong{font-size:34px;padding:10px 14px}}
+
+/* A little more weight on the result numbers only. */
+.lift-stats dd,.powerlifting-total strong{font-weight:900;-webkit-text-stroke:.25px currentColor}
+.lift-stats dd span,.powerlifting-total strong span{-webkit-text-stroke:0}

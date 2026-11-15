@@ -384,10 +384,9 @@ footer{border-top:1px solid color-mix(in srgb,var(--fg) 18%,transparent)}
 .powerlifting-photo{grid-column:2;grid-row:1;justify-self:end;max-width:none;width:100%;aspect-ratio:4/4.6;object-fit:cover;object-position:center bottom}
 .powerlifting-content h3{font-size:clamp(32px,4vw,48px);font-weight:850;letter-spacing:-1.8px;line-height:1.08;margin-bottom:22px}
 .powerlifting-content p{font-size:15px;line-height:1.8}
-.lift-stats{--lift-divider-gap:22px;max-width:none;margin-top:30px;gap:var(--lift-divider-gap)}
+.lift-stats{max-width:none;margin-top:30px}
 .lift-stats>div,.lift-stats>div:first-child{padding:0;background:transparent;border:0;border-radius:0}
 .lift-stats>div+div{position:relative;border:0}
-.lift-stats>div+div::before{content:'';position:absolute;left:calc(var(--lift-divider-gap) / -2);top:0;bottom:0;width:1px;background:color-mix(in srgb,var(--fg) 25%,transparent)}
 .lift-stats dt{font-size:15px;font-weight:500;color:var(--fg);margin-bottom:10px}
 .lift-stats dd{font-size:46px;font-weight:800;line-height:1.1;letter-spacing:-1.8px;white-space:nowrap}
 .lift-stats dd span{font-size:18px;letter-spacing:0;font-weight:500}
@@ -395,8 +394,8 @@ footer{border-top:1px solid color-mix(in srgb,var(--fg) 18%,transparent)}
 .powerlifting-total strong{padding:10px 16px;background:color-mix(in srgb,var(--primary) 22%,var(--bg));border-radius:14px;color:var(--fg);font-size:40px;font-weight:800;line-height:1.15;letter-spacing:-1.2px;white-space:nowrap}
 .powerlifting-total strong span{font-size:18px;letter-spacing:0;font-weight:500;color:var(--fg)}
 .powerlifting-total>span{font-size:12px;line-height:1.5}
-@media(max-width:850px){.powerlifting-card{gap:30px}.powerlifting-content h3{font-size:32px;letter-spacing:-1px}.lift-stats{--lift-divider-gap:12px;gap:var(--lift-divider-gap)}.lift-stats dd{font-size:36px}.lift-stats dd span{font-size:15px}.powerlifting-total strong{font-size:34px}}
-@media(max-width:600px){.powerlifting-card{grid-template-columns:1fr;gap:30px}.powerlifting-content{grid-column:1;grid-row:1}.powerlifting-photo{grid-column:1;grid-row:2;max-width:320px;justify-self:center;margin:0}.powerlifting-content h3{font-size:32px}.powerlifting-content p{font-size:14px}.lift-stats{--lift-divider-gap:12px;gap:var(--lift-divider-gap);margin-top:24px}.lift-stats dt{font-size:13px}.lift-stats dd{font-size:36px;letter-spacing:-1px}.powerlifting-total{margin-top:30px;padding:0;gap:12px}.powerlifting-total strong{font-size:34px;padding:10px 14px}}
+@media(max-width:850px){.powerlifting-card{gap:30px}.powerlifting-content h3{font-size:32px;letter-spacing:-1px}.lift-stats dd{font-size:36px}.lift-stats dd span{font-size:15px}.powerlifting-total strong{font-size:34px}}
+@media(max-width:600px){.powerlifting-card{grid-template-columns:1fr;gap:30px}.powerlifting-content{grid-column:1;grid-row:1}.powerlifting-photo{grid-column:1;grid-row:2;max-width:320px;justify-self:center;margin:0}.powerlifting-content h3{font-size:32px}.powerlifting-content p{font-size:14px}.lift-stats{margin-top:24px}.lift-stats dt{font-size:13px}.lift-stats dd{font-size:36px;letter-spacing:-1px}.powerlifting-total{margin-top:30px;padding:0;gap:12px}.powerlifting-total strong{font-size:34px;padding:10px 14px}}
 
 /* A little more weight on the result numbers only. */
 .lift-stats dd,.powerlifting-total strong{font-weight:900;-webkit-text-stroke:.25px currentColor}
@@ -477,17 +476,40 @@ footer{border-top:1px solid color-mix(in srgb,var(--fg) 18%,transparent)}
 .nullwise-views svg { flex-shrink: 0; color: #c3b6a2; }
 .nullwise-results { margin-top: 22px; }
 .nullwise-results-label { display: block; font-size: 11px; color: var(--secondary); margin-bottom: 10px; }
-.nullwise-stats { display: grid; grid-template-columns: 1fr 1fr .7fr; gap: 0; margin: 0; }
-.nullwise-stats > div { display: flex; flex-direction: column; gap: 6px; padding: 0 16px; }
-.nullwise-stats > div:first-child { padding-left: 0; }
-.nullwise-stats > div + div { border-left: 1px solid color-mix(in srgb, var(--fg) 25%, transparent); }
+.nullwise-stats { margin: 0; }
+.nullwise-stats > div { display: flex; flex-direction: column; gap: 6px; }
+
+/* Equal statistic columns; each line is centred in the gap between them. */
+.lift-stats, .nullwise-stats {
+  --stats-gap: 22px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  column-gap: var(--stats-gap);
+  text-align: left;
+}
+.lift-stats > div, .nullwise-stats > div {
+  position: relative;
+  min-width: 0;
+  padding: 0;
+  border-left: 0;
+}
+.lift-stats > div + div::before, .nullwise-stats > div + div::before {
+  content: '';
+  position: absolute;
+  left: calc(var(--stats-gap) / -2);
+  top: 50%;
+  width: 1px;
+  height: 58px;
+  transform: translate(-50%, -50%);
+  background: color-mix(in srgb, var(--fg) 25%, transparent);
+}
 .nullwise-stats dd { order: -1; margin: 0; font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 30px; font-weight: 800; letter-spacing: -1px; line-height: 1.1; }
 .nullwise-stats dt { font-size: 12px; line-height: 1.4; color: var(--secondary); }
 @media (max-width: 850px) {
   .game-project { column-gap: 28px; }
   .game-project .game-notes h3 { font-size: 30px; }
   .nullwise-gallery { gap: 8px; }
-  .nullwise-stats > div { padding: 0 12px; }
+  .lift-stats, .nullwise-stats { --stats-gap: 12px; }
   .nullwise-stats dd { font-size: 27px; }
   .nullwise-views { font-size: 11px; padding: 9px 8px; gap: 5px; }
 }

@@ -363,3 +363,10 @@ footer{border-top:1px solid color-mix(in srgb,var(--fg) 18%,transparent)}
 .powerlifting-total strong{font-size:38px;font-weight:750;letter-spacing:-1px;color:var(--primary);font-variant-numeric:tabular-nums}
 .powerlifting-total strong span{font-size:16px;color:var(--secondary)}
 @media(max-width:600px){.lift-stats dd{font-size:30px}.powerlifting-total strong{font-size:34px}}
+
+/* Separate understated result tiles, without divider lines. */
+.lift-stats{gap:12px}
+.lift-stats>div,.lift-stats>div:first-child{padding:14px 16px;background:var(--surface);border:0;border-radius:12px}
+.lift-stats>div+div{border-left:0}
+.powerlifting-total{border-top:0;padding-top:0;margin-top:22px}
+@media(max-width:600px){.lift-stats{gap:8px}.lift-stats>div,.lift-stats>div:first-child{padding:12px}}

@@ -105,7 +105,7 @@ function App() {
         <section id="about" className="shell section about about-editorial">
           <h2>Обо мне</h2>
           <h3>
-            От идеи до реализации<span className="orange">.</span>
+            Изучаю новое. Пробую на практике<span className="orange">.</span>
           </h3>
           <p>
             Учусь на втором курсе математико-механического факультета СПбГУ по

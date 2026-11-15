@@ -391,13 +391,12 @@ footer{border-top:1px solid color-mix(in srgb,var(--fg) 18%,transparent)}
 .lift-stats dt{font-size:15px;font-weight:500;color:var(--fg);margin-bottom:10px}
 .lift-stats dd{font-size:46px;font-weight:800;line-height:1.1;letter-spacing:-1.8px;white-space:nowrap}
 .lift-stats dd span{font-size:18px;letter-spacing:0;font-weight:500}
-.powerlifting-total{position:relative;display:flex;flex-direction:column;align-items:flex-start;flex-wrap:nowrap;gap:8px;max-width:none;margin-top:26px;padding:3px 0 3px 20px;border:0}
-.powerlifting-total::before{display:block;content:'';position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:999px;background:var(--primary)}
-.powerlifting-total strong{padding:0;background:transparent;border-radius:0;color:var(--fg);font-size:40px;font-weight:800;line-height:1.15;letter-spacing:-1.2px;white-space:nowrap}
+.powerlifting-total{display:flex;flex-direction:row;align-items:center;flex-wrap:wrap;gap:16px;max-width:none;margin-top:36px;padding:0;border:0}
+.powerlifting-total strong{padding:10px 16px;background:color-mix(in srgb,var(--primary) 22%,var(--bg));border-radius:14px;color:var(--fg);font-size:40px;font-weight:800;line-height:1.15;letter-spacing:-1.2px;white-space:nowrap}
 .powerlifting-total strong span{font-size:18px;letter-spacing:0;font-weight:500;color:var(--fg)}
-.powerlifting-total>span{font-size:13px;line-height:1.5;color:var(--secondary)}
+.powerlifting-total>span{font-size:12px;line-height:1.5}
 @media(max-width:850px){.powerlifting-card{gap:30px}.powerlifting-content h3{font-size:32px;letter-spacing:-1px}.lift-stats{--lift-divider-gap:12px;gap:var(--lift-divider-gap)}.lift-stats dd{font-size:36px}.lift-stats dd span{font-size:15px}.powerlifting-total strong{font-size:34px}}
-@media(max-width:600px){.powerlifting-card{grid-template-columns:1fr;gap:30px}.powerlifting-content{grid-column:1;grid-row:1}.powerlifting-photo{grid-column:1;grid-row:2;max-width:320px;justify-self:center;margin:0}.powerlifting-content h3{font-size:32px}.powerlifting-content p{font-size:14px}.lift-stats{--lift-divider-gap:12px;gap:var(--lift-divider-gap);margin-top:24px}.lift-stats dt{font-size:13px}.lift-stats dd{font-size:36px;letter-spacing:-1px}.powerlifting-total{margin-top:22px;padding:3px 0 3px 18px;gap:6px}.powerlifting-total strong{font-size:34px;padding:0}}
+@media(max-width:600px){.powerlifting-card{grid-template-columns:1fr;gap:30px}.powerlifting-content{grid-column:1;grid-row:1}.powerlifting-photo{grid-column:1;grid-row:2;max-width:320px;justify-self:center;margin:0}.powerlifting-content h3{font-size:32px}.powerlifting-content p{font-size:14px}.lift-stats{--lift-divider-gap:12px;gap:var(--lift-divider-gap);margin-top:24px}.lift-stats dt{font-size:13px}.lift-stats dd{font-size:36px;letter-spacing:-1px}.powerlifting-total{margin-top:30px;padding:0;gap:12px}.powerlifting-total strong{font-size:34px;padding:10px 14px}}
 
 /* A little more weight on the result numbers only. */
 .lift-stats dd,.powerlifting-total strong{font-weight:900;-webkit-text-stroke:.25px currentColor}

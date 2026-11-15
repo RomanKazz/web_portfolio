@@ -352,3 +352,6 @@ footer{border-top:1px solid color-mix(in srgb,var(--fg) 18%,transparent)}
 .powerlifting-total strong span{font-size:14px;font-weight:400;color:var(--secondary)}
 .powerlifting-total>span{font-size:12px}
 @media(max-width:600px){.lift-stats>div{padding:0 14px}.lift-stats>div:first-child{padding-left:0}.lift-stats dd,.powerlifting-total strong{font-size:24px}}
+
+/* Show the complete training photo at its natural aspect ratio. */
+.powerlifting-photo{aspect-ratio:auto;height:auto;object-fit:contain;object-position:center}

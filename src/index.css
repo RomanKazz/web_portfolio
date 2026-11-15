@@ -401,3 +401,17 @@ footer{border-top:1px solid color-mix(in srgb,var(--fg) 18%,transparent)}
 /* A little more weight on the result numbers only. */
 .lift-stats dd,.powerlifting-total strong{font-weight:900;-webkit-text-stroke:.25px currentColor}
 .lift-stats dd span,.powerlifting-total strong span{-webkit-text-stroke:0}
+
+/* The second project follows the same image-and-description layout. */
+.nullwise-project{margin-top:48px;padding-top:40px;border-top:1px solid color-mix(in srgb,var(--fg) 15%,transparent)}
+.nullwise-cover{position:relative;display:flex;flex-direction:column;justify-content:space-between;aspect-ratio:2044/1248;padding:24px;background:#c8d9bc;color:#263023;border-radius:16px;transform:rotate(2deg);box-shadow:3px 3px 0 var(--shadow);overflow:hidden;background-image:linear-gradient(#26302308 1px,transparent 1px),linear-gradient(90deg,#26302308 1px,transparent 1px);background-size:28px 28px}
+.nullwise-cover-label,.nullwise-cover-footer{font-size:9px;letter-spacing:1.7px;font-weight:600}
+.nullwise-cover-center{display:flex;flex-direction:column;align-items:center;gap:12px}
+.nullwise-formula{font-family:Georgia,serif;font-size:26px;font-style:italic;color:#4e6143}
+.nullwise-formula sup{font-size:.6em}
+.nullwise-wordmark{font-family:'Helvetica Neue',Arial,sans-serif;font-size:clamp(36px,5vw,58px);font-weight:800;letter-spacing:-2.5px;line-height:1.1}
+.nullwise-wordmark>span{color:#c74c27}
+.project-actions .nullwise-link{height:48px;padding:0 24px;border:2px solid #26201a;border-radius:12px;background:var(--primary);color:#26201a;box-shadow:4px 4px 0 var(--shadow);font-size:14px;font-weight:750;transition:transform .15s,box-shadow .15s}
+.project-actions .nullwise-link:hover{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--shadow);opacity:1}
+@media(max-width:700px){.nullwise-project{margin-top:36px;padding-top:32px}.nullwise-cover{max-width:none}}
+@media(max-width:600px){.nullwise-cover{padding:20px}.nullwise-wordmark{font-size:44px}.nullwise-formula{font-size:22px}.nullwise-cover-label,.nullwise-cover-footer{font-size:8px}}

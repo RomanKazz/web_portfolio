@@ -428,6 +428,7 @@ footer{border-top:1px solid color-mix(in srgb,var(--fg) 18%,transparent)}
   background: transparent;
   padding: 8px 14px;
   font-size: 13px;
+  font-weight: 650;
   line-height: 1.4;
 }
 .game-project .project-actions { margin-top: 26px; gap: 26px; }

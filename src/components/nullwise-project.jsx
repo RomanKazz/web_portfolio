@@ -20,7 +20,7 @@ export function NullwiseProject() {
       </div>
       <div className="game-notes nullwise-notes">
         <h3>nullwise<span className="orange">.</span></h3>
-        <p>Экспериментальный контент-проект о математике. Создавал видео с помощью Manim, Fish Audio и ИИ-агентов. Монтаж и финальную сборку делал в After Effects.</p>
+        <p>Экспериментальный контент-проект о математике. Создавал видео с помощью <strong>Manim</strong>, <strong>Fish Audio</strong> и <strong>ИИ-агентов</strong>. Монтаж и финальную сборку делал в <strong>After Effects</strong>.</p>
         <div className="nullwise-results">
           <span className="nullwise-results-label">За месяц</span>
           <dl className="nullwise-stats">

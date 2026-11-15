@@ -1,13 +1,21 @@
 import { useEffect, useRef, useState } from 'react';
-import { ArrowUpRight, Check, Copy, Github, Mail, Send } from 'lucide-react';
+import { createPortal } from 'react-dom';
+import { ArrowUpRight, Check, CircleAlert, Copy, Github, Mail, Send, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const email = 'roman.kazachkov1@gmail.com';
 
 export function ContactSection() {
   const [copyState, setCopyState] = useState('idle');
+  const [toast, setToast] = useState({ open: false, kind: 'success' });
   const resetTimer = useRef(null);
   useEffect(() => () => clearTimeout(resetTimer.current), []);
+
+  function dismissToast() {
+    clearTimeout(resetTimer.current);
+    setToast(current => ({ ...current, open: false }));
+    setCopyState('idle');
+  }
 
   async function copyEmail() {
     clearTimeout(resetTimer.current);
@@ -15,13 +23,16 @@ export function ContactSection() {
     try {
       await navigator.clipboard.writeText(email);
       setCopyState('copied');
+      setToast({ open: true, kind: 'success' });
     } catch {
       setCopyState('error');
+      setToast({ open: true, kind: 'error' });
     }
-    resetTimer.current = setTimeout(() => setCopyState('idle'), 4000);
+    resetTimer.current = setTimeout(dismissToast, 4000);
   }
 
   return (
+    <>
     <section id="contact" className="contact-section">
       <div className="shell">
         <h2>Контакты</h2>
@@ -42,12 +53,26 @@ export function ContactSection() {
                 {copyState === 'copied' ? <Check size={16} /> : <Copy size={16} />}
               </button>
             </div>
-            <span className="copy-feedback" role="status" aria-live="polite">
-              {copyState === 'copied' ? 'Скопировано' : copyState === 'error' ? 'Не удалось скопировать. Выдели адрес вручную.' : ''}
-            </span>
           </div>
         </div>
       </div>
     </section>
+    {createPortal(
+      <div className="copy-toast" data-open={toast.open} data-kind={toast.kind} inert={!toast.open} aria-hidden={!toast.open}>
+        <span className="copy-toast-icon" aria-hidden="true">
+          {toast.kind === 'success' ? <Check size={19} strokeWidth={2.5} /> : <CircleAlert size={20} />}
+        </span>
+        <div className="copy-toast-message">
+          <strong>{toast.kind === 'success' ? 'Почта скопирована' : 'Не удалось скопировать'}</strong>
+          <span>{toast.kind === 'success' ? email : 'Выдели адрес и скопируй вручную.'}</span>
+        </div>
+        <button type="button" className="copy-toast-close" aria-label="Закрыть уведомление" onClick={dismissToast}><X size={16} /></button>
+      </div>,
+      document.body,
+    )}
+    <span className="sr-only" role="status" aria-live="polite" aria-atomic="true">
+      {toast.open ? toast.kind === 'success' ? 'Почта скопирована' : 'Не удалось скопировать. Выдели адрес и скопируй вручную.' : ''}
+    </span>
+    </>
   );
 }

@@ -38,8 +38,6 @@ nav a:focus-visible::after { transform: scaleX(1); }
 .nullwise-video { transition: translate .3s var(--motion-ease); }
 .copy-email { transition: background-color .2s ease, color .2s ease, transform .2s var(--motion-ease); }
 .copy-email:active { transform: scale(.92); }
-.copy-feedback:not(:empty) { animation: feedback-enter .2s ease-out; }
-@keyframes feedback-enter { from { opacity: 0; transform: translateY(3px); } to { opacity: 1; transform: translateY(0); } }
 @media (hover: hover) and (pointer: fine) {
   nav a:hover::after { transform: scaleX(1); }
   .wordmark:hover { transform: translateY(-2px); }

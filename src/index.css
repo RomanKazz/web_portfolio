@@ -517,47 +517,38 @@ footer{border-top:1px solid color-mix(in srgb,var(--fg) 18%,transparent)}
 .powerlifting-content{grid-column:2;grid-row:1}
 @media(max-width:600px){.powerlifting-card{grid-template-columns:1fr}.powerlifting-photo{grid-column:1;grid-row:1;justify-self:center}.powerlifting-content{grid-column:1;grid-row:2}}
 
-/* Clipboard feedback lives above the page without moving the contact links. */
+/* Compact clipboard feedback anchored to the copy button. */
+.copy-email-anchor { position: relative; display: inline-flex; flex-shrink: 0; }
 .copy-toast {
-  position: fixed;
-  z-index: 100;
-  right: max(24px, env(safe-area-inset-right));
-  bottom: max(24px, env(safe-area-inset-bottom));
-  display: flex;
+  position: absolute;
+  z-index: 10;
+  right: 0;
+  bottom: calc(100% + 8px);
+  display: inline-flex;
   align-items: center;
-  gap: 12px;
-  width: 360px;
-  max-width: calc(100vw - 32px);
-  padding: 16px;
+  gap: 5px;
+  width: max-content;
+  padding: 6px 9px;
   border: 1px solid #b9d9c2;
-  border-radius: 14px;
+  border-radius: 8px;
   background: #edf8ef;
   color: #245335;
-  box-shadow: 0 4px 6px #0001, 0 10px 24px #0002;
+  box-shadow: 0 3px 8px #0002;
+  font: 500 12px/1.4 system-ui, sans-serif;
+  white-space: nowrap;
   opacity: 0;
   visibility: hidden;
-  transform: translateY(12px) scale(.98);
+  transform: translateY(4px);
   pointer-events: none;
-  transition: opacity .22s ease, transform .25s var(--motion-ease), visibility 0s .25s;
+  transition: opacity .18s ease, transform .2s var(--motion-ease), visibility 0s .2s;
 }
 .copy-toast[data-open='true'] {
   opacity: 1;
   visibility: visible;
-  transform: translateY(0) scale(1);
-  pointer-events: auto;
+  transform: translateY(0);
   transition-delay: 0s;
 }
-.copy-toast-icon { display: grid; place-items: center; flex-shrink: 0; width: 34px; height: 34px; border-radius: 50%; background: #d4eddb; }
-.copy-toast-message { min-width: 0; flex: 1; font-family: system-ui, sans-serif; line-height: 1.45; }
-.copy-toast-message strong { display: block; font-size: 14px; font-weight: 650; }
-.copy-toast-message > span { display: block; margin-top: 3px; font-size: 12px; overflow-wrap: anywhere; }
-.copy-toast-close { display: grid; place-items: center; flex-shrink: 0; align-self: flex-start; width: 28px; height: 28px; padding: 0; border: 0; border-radius: 7px; background: transparent; color: inherit; transition: background-color .15s; }
-.copy-toast-close:hover { background: #24533512; }
+.copy-toast svg { flex-shrink: 0; }
 .copy-toast[data-kind='error'] { background: var(--surface); color: var(--fg); border-color: var(--card-outline); }
-.copy-toast[data-kind='error'] .copy-toast-icon { background: color-mix(in srgb, var(--primary) 18%, transparent); color: var(--primary); }
+.copy-toast[data-kind='error'] svg { color: var(--primary); }
 :root[data-theme='dark'] .copy-toast[data-kind='success'] { background: #223c2b; color: #dcf4e3; border-color: #42674e; }
-:root[data-theme='dark'] .copy-toast[data-kind='success'] .copy-toast-icon { background: #31583d; }
-:root[data-theme='dark'] .copy-toast-close:hover { background: #ffffff12; }
-@media (max-width: 600px) {
-  .copy-toast { right: max(16px, env(safe-area-inset-right)); bottom: max(16px, env(safe-area-inset-bottom)); padding: 14px; gap: 10px; }
-}

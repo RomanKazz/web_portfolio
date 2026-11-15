@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Open Graph — Роман Казачков</title>
+  <!-- Render at 1200 × 630, device scale 1, to public/og-image.png. -->
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; width: 1200px; height: 630px; overflow: hidden; background: #26221f; color: #f5ead6; font-family: 'Helvetica Neue', Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+    main { height: 100%; padding: 38px 64px 30px; }
+    header { display: flex; align-items: center; justify-content: space-between; padding-bottom: 24px; border-bottom: 1px solid #f5ead632; }
+    .logo { display: grid; place-items: center; width: 54px; height: 50px; border-radius: 10px; background: #f5f5f5; color: #171717; font-size: 30px; font-weight: 800; letter-spacing: -2px; }
+    .university { font-size: 17px; color: #c3b6a2; letter-spacing: .3px; }
+    .hero { height: 420px; display: grid; grid-template-columns: 1fr 320px; gap: 68px; align-items: center; }
+    .eyebrow { display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 600; letter-spacing: 1.8px; color: #c3b6a2; margin: 0 0 22px; }
+    .eyebrow::before { content: ''; width: 7px; height: 7px; background: #ff885e; border-radius: 50%; }
+    h1 { font-size: 84px; font-weight: 800; line-height: 1.03; letter-spacing: -3.5px; margin: 0; }
+    h1 span { color: #ff885e; }
+    .tagline { margin: 25px 0 0; font-size: 27px; line-height: 1.3; color: #c3b6a2; letter-spacing: -.3px; }
+    .portrait { width: 304px; height: 342px; justify-self: end; object-fit: cover; object-position: center; border-radius: 18px; transform: rotate(2deg); box-shadow: 5px 6px 0 #100e0c; }
+    footer { display: flex; justify-content: space-between; align-items: center; padding-top: 25px; border-top: 1px solid #f5ead632; font-size: 16px; }
+    .projects { display: flex; align-items: center; gap: 16px; }
+    .divider { color: #ff885e; }
+    .address { color: #c3b6a2; }
+  </style>
+</head>
+<body>
+  <main>
+    <header><div class="logo">rk.</div><div class="university">СПбГУ · Матмех</div></header>
+    <section class="hero">
+      <div>
+        <p class="eyebrow">СТУДЕНТ И РАЗРАБОТЧИК</p>
+        <h1>Роман<br />Казачков<span>.</span></h1>
+        <p class="tagline">От идеи до реализации.</p>
+      </div>
+      <img class="portrait" src="../public/portrait.jpg" alt="Роман Казачков" />
+    </section>
+    <footer><div class="projects">Fortbonk <span class="divider">/</span> nullwise</div><span class="address">RomanKazz.github.io</span></footer>
+  </main>
+</body>
+</html>

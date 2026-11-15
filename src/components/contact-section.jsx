@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { createPortal } from 'react-dom';
-import { ArrowUpRight, Check, CircleAlert, Copy, Github, Mail, Send, X } from 'lucide-react';
+import { ArrowUpRight, Check, CircleAlert, Copy, Github, Mail, Send } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const email = 'roman.kazachkov1@gmail.com';
@@ -28,7 +27,7 @@ export function ContactSection() {
       setCopyState('error');
       setToast({ open: true, kind: 'error' });
     }
-    resetTimer.current = setTimeout(dismissToast, 4000);
+    resetTimer.current = setTimeout(dismissToast, 2500);
   }
 
   return (
@@ -49,27 +48,20 @@ export function ContactSection() {
           <div className="contact-email-group">
             <div className="contact-email-row">
               <a className="contact-secondary" href={`mailto:${email}`}><Mail size={18} /><span>{email}</span></a>
-              <button className="copy-email" type="button" onClick={copyEmail} disabled={copyState === 'copying'} aria-label="Скопировать email" title="Скопировать email">
-                {copyState === 'copied' ? <Check size={16} /> : <Copy size={16} />}
-              </button>
+              <span className="copy-email-anchor">
+                <button className="copy-email" type="button" onClick={copyEmail} disabled={copyState === 'copying'} aria-label="Скопировать email">
+                  {copyState === 'copied' ? <Check size={16} /> : <Copy size={16} />}
+                </button>
+                <span className="copy-toast" data-open={toast.open} data-kind={toast.kind} aria-hidden="true">
+                  {toast.kind === 'success' ? <Check size={14} strokeWidth={2.5} /> : <CircleAlert size={14} />}
+                  {toast.kind === 'success' ? 'Скопировано' : 'Не удалось скопировать'}
+                </span>
+              </span>
             </div>
           </div>
         </div>
       </div>
     </section>
-    {createPortal(
-      <div className="copy-toast" data-open={toast.open} data-kind={toast.kind} inert={!toast.open} aria-hidden={!toast.open}>
-        <span className="copy-toast-icon" aria-hidden="true">
-          {toast.kind === 'success' ? <Check size={19} strokeWidth={2.5} /> : <CircleAlert size={20} />}
-        </span>
-        <div className="copy-toast-message">
-          <strong>{toast.kind === 'success' ? 'Почта скопирована' : 'Не удалось скопировать'}</strong>
-          <span>{toast.kind === 'success' ? email : 'Выдели адрес и скопируй вручную.'}</span>
-        </div>
-        <button type="button" className="copy-toast-close" aria-label="Закрыть уведомление" onClick={dismissToast}><X size={16} /></button>
-      </div>,
-      document.body,
-    )}
     <span className="sr-only" role="status" aria-live="polite" aria-atomic="true">
       {toast.open ? toast.kind === 'success' ? 'Почта скопирована' : 'Не удалось скопировать. Выдели адрес и скопируй вручную.' : ''}
     </span>

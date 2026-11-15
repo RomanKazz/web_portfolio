@@ -312,28 +312,20 @@ footer{border:0;padding-top:25px;padding-bottom:35px;font-size:10px}
 @media(max-width:600px){.project-more-content{padding:20px;margin-top:24px}}
 @media(prefers-reduced-motion:reduce){.project-more,.project-toggle,.project-toggle svg,.toggle-label>span{transition:none!important}}
 
-/* Three direct contact cards, without an enclosing panel. */
+/* Compact, understated contact links. */
 .contact-section{padding:0}
-.contact-section .shell{padding:36px 0;background:transparent;border:0;border-radius:0}
-.contact-section h2{margin:0 0 24px}
-.contact-links{display:grid;grid-template-columns:1fr 1fr 1.3fr;gap:16px;margin:0}
-.contact-links a{display:flex;align-items:center;gap:14px;min-width:0;padding:20px;background:var(--surface);border:1px solid var(--card-outline);border-radius:16px;transition:background .18s,border-color .18s}
-.contact-links a:hover{background:color-mix(in srgb,var(--primary) 7%,var(--surface));border-color:var(--primary);color:var(--fg)}
-.contact-links a>svg{flex-shrink:0}
-.contact-links a>div{min-width:0}
-.contact-links small{font:inherit;font-size:11px;color:var(--secondary);letter-spacing:0;margin-bottom:5px}
-.contact-links strong{display:block;font-size:14px;font-weight:700;line-height:1.4;overflow-wrap:anywhere}
-.contact-links a>svg:last-child{width:18px;height:18px;margin-left:auto}
-footer{border-top:1px solid color-mix(in srgb,var(--fg) 18%,transparent)}
-@media(max-width:850px){.contact-links{grid-template-columns:repeat(2,minmax(0,1fr))}.contact-links a:last-child{grid-column:1/-1}}
-@media(max-width:600px){.contact-section .shell{padding:30px 0}.contact-links{grid-template-columns:1fr;gap:12px}.contact-links a{padding:18px}.contact-links a:last-child{grid-column:auto}}
-
-/* Minimal contact links without card backgrounds or borders. */
-.contact-links a{padding:8px 0;border:0;border-radius:0;background:transparent}
+.contact-section .shell{padding:28px 0;background:transparent;border:0;border-radius:0}
+.contact-section h2{margin:0 0 20px}
+.contact-links{display:flex;flex-wrap:wrap;align-items:center;gap:20px 48px;margin:0}
+.contact-links a{display:inline-flex;align-items:center;gap:10px;min-width:0;padding:6px 0;background:transparent;border:0;border-radius:0;transition:color .18s}
 .contact-links a:hover{background:transparent;color:var(--primary)}
-.contact-links a>svg:last-child{width:15px;height:15px;margin-left:4px;color:var(--secondary)}
-.contact-links{gap:24px}
-@media(max-width:600px){.contact-links{gap:18px}.contact-links a{padding:4px 0}}
+.contact-links a>svg:first-child{width:20px;height:20px;flex-shrink:0;stroke-width:1.6;color:var(--secondary)}
+.contact-links a>div{min-width:0}
+.contact-links small{display:block;font:inherit;font-size:11px;color:var(--secondary);letter-spacing:0;margin-bottom:3px}
+.contact-links strong{display:block;font-family:'Helvetica Neue',Arial,sans-serif;font-size:14px;font-weight:500;line-height:1.45;overflow-wrap:anywhere}
+.contact-links a>svg:last-child{width:12px;height:12px;margin-left:0;flex-shrink:0;color:var(--secondary);opacity:.65}
+footer{border-top:1px solid color-mix(in srgb,var(--fg) 18%,transparent)}
+@media(max-width:600px){.contact-links{flex-direction:column;align-items:flex-start;gap:14px}.contact-section .shell{padding:28px 0}.contact-links a{max-width:100%;padding:4px 0}}
 
 /* Use the hero portrait's photo treatment across the page. */
 .game-preview,.powerlifting-photo{

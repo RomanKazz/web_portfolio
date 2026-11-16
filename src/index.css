@@ -233,6 +233,7 @@ h1 {
   transform: translate(2px, 2px);
   box-shadow: 2px 2px 0 var(--shadow);
 }
+.hero-actions > a:first-child:hover,
 .project-actions .project-primary:hover,
 .contact-actions .contact-telegram:hover {
   opacity: 1;
@@ -278,12 +279,22 @@ h1 {
   color: var(--secondary);
 }
 
-/* Shared content heading scale. */
+/* Shared content typography. */
 .about-editorial > h3,
 .game-notes h3,
 .powerlifting-content h3 {
+  font-family: "Helvetica Neue", Arial, sans-serif;
   font-size: 36px;
   font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -1px;
+  margin-bottom: 20px;
+}
+.about-editorial > p,
+.game-notes > p,
+.powerlifting-content p {
+  font-size: 15px;
+  line-height: 1.8;
 }
 
 /* Biography. */
@@ -294,15 +305,10 @@ h1 {
   margin-bottom: 18px;
 }
 .about-editorial > h3 {
-  letter-spacing: -1px;
-  line-height: 1.2;
-  margin-bottom: 20px;
   text-wrap: balance;
 }
 .about-editorial > p {
   max-width: 780px;
-  font-size: 16px;
-  line-height: 1.8;
 }
 .about-editorial > p + p {
   margin-top: 16px;
@@ -336,16 +342,6 @@ h1 {
 }
 .game-notes {
   min-width: 0;
-}
-.game-notes h3 {
-  font-family: "Helvetica Neue", Arial, sans-serif;
-  line-height: 1.15;
-  letter-spacing: -1px;
-  margin-bottom: 16px;
-}
-.game-notes > p {
-  font-size: 15px;
-  line-height: 1.8;
 }
 .project-chips {
   display: flex;
@@ -603,16 +599,6 @@ h1 {
   grid-column: 2;
   grid-row: 1;
 }
-.powerlifting-content h3 {
-  font-family: "Helvetica Neue", Arial, sans-serif;
-  letter-spacing: -1.8px;
-  line-height: 1.08;
-  margin-bottom: 22px;
-}
-.powerlifting-content p {
-  font-size: 15px;
-  line-height: 1.8;
-}
 .lift-stats {
   width: 100%;
   margin-top: 30px;
@@ -855,9 +841,6 @@ footer {
   .powerlifting-card {
     gap: 30px;
   }
-  .powerlifting-content h3 {
-    letter-spacing: -1px;
-  }
   .lift-stats dt {
     gap: 5px;
   }
@@ -967,17 +950,17 @@ footer {
   .about-editorial > h2 {
     margin-bottom: 14px;
   }
-  .about-editorial > h3 {
-    letter-spacing: -0.7px;
-    margin-bottom: 16px;
-  }
-  .about-editorial > p {
+  .about-editorial > p,
+  .game-notes > p,
+  .powerlifting-content p {
     font-size: 14px;
   }
   .about-editorial > h3,
   .game-notes h3,
   .powerlifting-content h3 {
     font-size: 28px;
+    letter-spacing: -0.7px;
+    margin-bottom: 16px;
   }
   .project-chips {
     margin-top: 18px;
@@ -1000,9 +983,6 @@ footer {
   .powerlifting-content {
     grid-column: 1;
     grid-row: 2;
-  }
-  .powerlifting-content p {
-    font-size: 14px;
   }
   .lift-stats {
     margin-top: 24px;
@@ -1033,9 +1013,11 @@ footer {
   .contact-email-group {
     flex-basis: 100%;
   }
+  .hero-actions > a:first-child,
+  .project-actions .project-primary,
   .contact-actions .contact-telegram {
-    padding: 0 16px;
-    font-size: 13px;
+    padding: 0 20px;
+    font-size: 14px;
   }
   .contact-secondary {
     font-size: 13px;

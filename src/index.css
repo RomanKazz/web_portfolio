@@ -615,7 +615,7 @@ h1 {
 }
 .lift-stats dd {
   margin: 0;
-  font-size: 46px;
+  font-size: 40px;
   line-height: 1.1;
   letter-spacing: -1.8px;
   white-space: nowrap;
@@ -648,7 +648,7 @@ h1 {
   background: color-mix(in srgb, var(--primary) 22%, var(--bg));
   border-radius: 14px;
   color: var(--fg);
-  font-size: 40px;
+  font-size: 46px;
   line-height: 1.15;
   letter-spacing: -1.2px;
   white-space: nowrap;
@@ -845,13 +845,13 @@ footer {
     gap: 5px;
   }
   .lift-stats dd {
-    font-size: 36px;
+    font-size: 34px;
   }
   .lift-stats dd span {
     font-size: 15px;
   }
   .powerlifting-total strong {
-    font-size: 34px;
+    font-size: 36px;
   }
 }
 @media (max-width: 700px) {
